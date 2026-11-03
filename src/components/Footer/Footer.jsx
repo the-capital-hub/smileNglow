@@ -89,7 +89,7 @@ function Footer() {
               </span>
 
               <span className="footer-brand-name">
-                <span>Vasu Aesthetics</span>
+                <span>Smile N Glow</span>
                 <strong>&amp; Dental Care</strong>
               </span>
             </a>
