@@ -3,8 +3,6 @@ import {
   Heart,
   ShieldCheck,
   UsersRound,
-  Smile,
-  Award,
   Stethoscope,
 } from "lucide-react";
 import "./AboutUs.css";
@@ -58,14 +56,14 @@ export default function AboutUs() {
           </span>
 
           <h2 id="about-us-title">
-            About Vasu Aesthetics
-            <span> &amp; Dental Care</span>
+            About Smile N Glow
+            <span> Dental Clinic</span>
           </h2>
 
           <p className="about-us-description">
-            At Vasu Aesthetics &amp; Dental Care, we are committed to
-            delivering thoughtful, compassionate and personalized dental care.
-            Our goal is to help you work towards a healthy, confident smile.
+            At Smile N Glow Dental Clinic, we are committed to providing
+            thoughtful, compassionate and personalized dental care. Our goal
+            is to help every patient work towards a healthy, confident smile.
           </p>
 
           <div className="about-us-features">
