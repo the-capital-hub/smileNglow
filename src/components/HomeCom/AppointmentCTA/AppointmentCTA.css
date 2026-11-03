@@ -1,0 +1,448 @@
+.appointment-cta {
+  width: 100%;
+  padding: 24px 2.5%;
+  background: #fffaf7;
+  box-sizing: border-box;
+}
+
+.appointment-cta *,
+.appointment-cta *::before,
+.appointment-cta *::after {
+  box-sizing: border-box;
+}
+
+.appointment-cta-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 39% 61%;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1900px;
+  min-height: 680px;
+  margin: 0 auto;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid #f6e4d8;
+  border-radius: 40px;
+  background: #fffaf7;
+  box-shadow: 0 18px 36px rgba(205, 104, 42, 0.1);
+}
+
+/* Image */
+
+.appointment-cta-photo {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  min-height: 680px;
+  overflow: hidden;
+  border-radius: 40px 0 0 40px;
+  clip-path: url("#appointment-cta-photo-clip");
+}
+
+.appointment-cta-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 680px;
+  object-fit: cover;
+  object-position: 46% center;
+}
+
+/* Curved image edge */
+
+.appointment-cta-photo::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: -5%;
+  right: -3px;
+  width: 30%;
+  height: 110%;
+  border-right: 7px solid #ff8a2b;
+  border-radius: 0 100% 100% 0;
+  transform: rotate(7deg);
+  pointer-events: none;
+}
+
+.appointment-cta-photo::before {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  top: -5%;
+  right: 10px;
+  width: 30%;
+  height: 110%;
+  border-right: 10px solid rgba(255, 199, 160, 0.72);
+  border-radius: 0 100% 100% 0;
+  transform: rotate(7deg);
+  pointer-events: none;
+}
+
+/* Text content */
+
+.appointment-cta-copy {
+  position: relative;
+  z-index: 5;
+  align-self: center;
+  min-width: 0;
+  padding: 42px 5.5% 42px 8%;
+}
+
+.appointment-cta-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 26px;
+  border-radius: 50px;
+  background: #ffeadb;
+  color: #e95a0a;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.appointment-cta-copy h2 {
+  max-width: 980px;
+  margin: 28px 0 20px;
+  color: #281a14;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(42px, 4.15vw, 78px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -1.6px;
+}
+
+.appointment-cta-copy h2 span {
+  display: block;
+  color: #ed5b0b;
+}
+
+.appointment-cta-description {
+  max-width: 900px;
+  margin: 0;
+  color: #53606d;
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+/* Benefits */
+
+.appointment-cta-benefits {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 42px 0 42px;
+}
+
+.appointment-cta-benefit {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding-right: 22px;
+  color: #151515;
+}
+
+.appointment-cta-benefit:not(:last-child) {
+  border-right: 1px solid #f4d5c1;
+}
+
+.appointment-cta-benefit-icon {
+  display: grid;
+  width: 68px;
+  height: 68px;
+  flex: 0 0 68px;
+  place-items: center;
+  border-radius: 17px;
+  background: #fff0e4;
+  color: #e95a0a;
+}
+
+.appointment-cta-benefit strong {
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* CTA button */
+
+.appointment-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 84px;
+  padding: 20px 42px;
+  border-radius: 22px;
+  background: #ed5906;
+  color: #fff;
+  font-size: 23px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 20px rgba(237, 91, 8, 0.18);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.appointment-cta-button:hover {
+  transform: translateY(-2px);
+  background: #d94d00;
+}
+
+/* Decorative tooth and background waves */
+
+.appointment-cta-tooth {
+  position: absolute;
+  z-index: 1;
+  top: 75px;
+  right: 4%;
+  width: 150px;
+  color: rgba(237, 91, 8, 0.09);
+  pointer-events: none;
+}
+
+.appointment-cta-tooth svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.appointment-cta-wave {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  background: #ffeadc;
+}
+
+.appointment-cta-wave-top {
+  top: -100px;
+  right: -65px;
+  width: 430px;
+  height: 210px;
+  border-radius: 0 0 45% 55%;
+  transform: rotate(14deg);
+  opacity: 0.8;
+}
+
+.appointment-cta-wave-bottom {
+  right: -75px;
+  bottom: -115px;
+  width: 520px;
+  height: 260px;
+  border-radius: 60% 0 0 0;
+  transform: rotate(-9deg);
+  opacity: 0.85;
+}
+
+/* Medium screens */
+
+@media (max-width: 1400px) {
+  .appointment-cta-card {
+    grid-template-columns: 38% 62%;
+    min-height: 570px;
+  }
+
+  .appointment-cta-photo,
+  .appointment-cta-image {
+    min-height: 570px;
+  }
+
+  .appointment-cta-copy {
+    padding: 32px 4% 32px 7%;
+  }
+
+  .appointment-cta-copy h2 {
+    font-size: clamp(38px, 4vw, 58px);
+    letter-spacing: -0.8px;
+  }
+
+  .appointment-cta-description {
+    font-size: 17px;
+  }
+
+  .appointment-cta-benefits {
+    gap: 12px;
+    margin: 30px 0;
+  }
+
+  .appointment-cta-benefit {
+    gap: 10px;
+    padding-right: 12px;
+  }
+
+  .appointment-cta-benefit-icon {
+    width: 52px;
+    height: 52px;
+    flex-basis: 52px;
+  }
+
+  .appointment-cta-benefit strong {
+    font-size: 15px;
+    white-space: normal;
+  }
+
+  .appointment-cta-button {
+    min-height: 68px;
+    padding: 16px 28px;
+    font-size: 19px;
+  }
+
+  .appointment-cta-tooth {
+    width: 100px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 760px) {
+  .appointment-cta {
+    padding: 20px 14px;
+  }
+
+  .appointment-cta-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    border-radius: 26px;
+  }
+
+  .appointment-cta-photo {
+    min-height: 300px;
+    max-height: 360px;
+    border-radius: 26px 26px 0 0;
+    clip-path: none;
+  }
+
+  .appointment-cta-image {
+    min-height: 300px;
+    object-position: center;
+  }
+
+  .appointment-cta-photo::before,
+  .appointment-cta-photo::after {
+    display: none;
+  }
+
+  .appointment-cta-copy {
+    padding: 24px 20px;
+  }
+
+  .appointment-cta-label {
+    gap: 10px;
+    padding: 12px 18px;
+    font-size: 16px;
+  }
+
+  .appointment-cta-copy h2 {
+    margin: 20px 0 14px;
+    font-size: clamp(32px, 8vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+  }
+
+  .appointment-cta-description {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  .appointment-cta-benefits {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+    margin: 24px 0;
+  }
+
+  .appointment-cta-benefit {
+    padding-right: 0;
+    border-right: 0 !important;
+  }
+
+  .appointment-cta-benefit-icon {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+  }
+
+  .appointment-cta-button {
+    width: 100%;
+    gap: 12px;
+    min-height: 62px;
+    padding: 14px 16px;
+    font-size: 17px;
+  }
+
+  .appointment-cta-tooth {
+    top: 14px;
+    right: 14px;
+    width: 70px;
+  }
+}
+.appointment-cta {
+  padding: 20px 3%;
+}
+
+.appointment-cta-card {
+  grid-template-columns: 39% 61%;
+  min-height: 460px;
+  border-radius: 28px;
+}
+
+.appointment-cta-photo,
+.appointment-cta-image {
+  min-height: 460px;
+}
+
+.appointment-cta-copy {
+  padding: 24px 4% 24px 6%;
+}
+
+.appointment-cta-label {
+  gap: 10px;
+  padding: 11px 20px;
+  font-size: 16px;
+}
+
+.appointment-cta-copy h2 {
+  margin: 20px 0 14px;
+  font-size: clamp(34px, 3.2vw, 54px);
+  line-height: 1.04;
+  letter-spacing: -0.8px;
+}
+
+.appointment-cta-description {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.appointment-cta-benefits {
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.appointment-cta-benefit {
+  gap: 10px;
+  padding-right: 14px;
+}
+
+.appointment-cta-benefit-icon {
+  width: 48px;
+  height: 48px;
+  flex-basis: 48px;
+  border-radius: 14px;
+}
+
+.appointment-cta-benefit strong {
+  font-size: 14px;
+}
+
+.appointment-cta-button {
+  min-height: 60px;
+  gap: 14px;
+  padding: 14px 26px;
+  border-radius: 16px;
+  font-size: 17px;
+}
+
+.appointment-cta-tooth {
+  top: 24px;
+  right: 3%;
+  width: 88px;
+}

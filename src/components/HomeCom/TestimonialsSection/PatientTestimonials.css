@@ -1,0 +1,374 @@
+.testimonials-section {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 5% 24px;
+  background: linear-gradient(135deg, #fffaf5 0%, #fff4e9 100%);
+  color: #251812;
+}
+
+.testimonial-tooth {
+  position: absolute;
+  top: 24px;
+  right: 4%;
+  color: rgba(239, 105, 28, 0.08);
+  font-size: 220px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.testimonials-heading {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+
+.testimonials-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  background: #ffe6d2;
+  color: #df570d;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.label-icon {
+  font-size: 20px;
+}
+
+.testimonials-heading h2 {
+  margin: 16px 0 10px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(30px, 4vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.testimonials-heading h2 span {
+  color: #e95d13;
+}
+
+.testimonials-heading > p {
+  margin: 0;
+  color: #59616a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.testimonials-carousel {
+  position: relative;
+  max-width: 1420px;
+  margin: 0 auto;
+}
+
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.testimonial-card {
+  position: relative;
+  display: flex;
+  min-height: 310px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 28px;
+  border: 1px solid #f4d6c1;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 12px 30px rgba(139, 77, 35, 0.08);
+}
+
+.testimonial-card-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 112px;
+}
+
+.patient-photo {
+  width: 96px;
+  height: 96px;
+  flex: 0 0 96px;
+  border: 3px solid #fff0e3;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.patient-details {
+  min-width: 0;
+}
+
+.patient-details h3 {
+  margin: 0 0 7px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.patient-location {
+  margin: 0 0 8px;
+  color: #5e6268;
+  font-size: 14px;
+}
+
+.patient-location span {
+  color: #ed681b;
+  font-size: 11px;
+}
+
+.patient-stars {
+  color: #ed681b;
+  font-size: 24px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.quote-mark {
+  position: absolute;
+  top: -8px;
+  right: 0;
+  color: #ed681b;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.testimonial-divider {
+  height: 1px;
+  margin: 18px 0;
+  background: #f2c6a6;
+}
+
+.patient-review {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #242424;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.testimonial-card-wave {
+  position: absolute;
+  right: -10px;
+  bottom: -28px;
+  left: 35%;
+  height: 58px;
+  border-top: 2px solid #f17a2b;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(110deg, transparent 10%, #ffe0c5 90%);
+  transform: rotate(-5deg);
+}
+
+.testimonial-arrow {
+  position: absolute;
+  z-index: 2;
+  top: 43%;
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 1px solid #f5d2bb;
+  border-radius: 50%;
+  background: #fff;
+  color: #271b15;
+  box-shadow: 0 5px 15px rgba(99, 54, 24, 0.12);
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.testimonial-arrow-left {
+  left: -60px;
+}
+
+.testimonial-arrow-right {
+  right: -60px;
+  border-color: #ed681b;
+  background: #ed681b;
+  color: #fff;
+}
+
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px 0 30px;
+}
+
+.testimonial-dots span {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #f4d1b7;
+}
+
+.testimonial-dots span.active {
+  background: #ed681b;
+}
+
+.testimonial-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  border: 1px solid #f5dfcf;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.testimonial-stat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 0 20px;
+}
+
+.testimonial-stat + .testimonial-stat {
+  border-left: 1px solid #efb88f;
+}
+
+.stat-icon {
+  display: grid;
+  width: 68px;
+  height: 68px;
+  flex: 0 0 68px;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff0e2;
+  color: #ed681b;
+  font-size: 36px;
+}
+
+.testimonial-stat strong {
+  display: block;
+  color: #e95d13;
+  font-size: 30px;
+  line-height: 1.15;
+}
+
+.testimonial-stat span {
+  display: block;
+  margin-top: 4px;
+  color: #30251f;
+  font-size: 15px;
+}
+
+@media (max-width: 1100px) {
+  .testimonial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .testimonial-card:last-child {
+    display: none;
+  }
+
+  .testimonial-arrow-left {
+    left: -20px;
+  }
+
+  .testimonial-arrow-right {
+    right: -20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .testimonials-section {
+    padding: 20px 18px;
+  }
+
+  .testimonials-heading {
+    margin-bottom: 22px;
+  }
+
+  .testimonials-heading > p {
+    font-size: 14px;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-card {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .testimonial-card:not(:first-child) {
+    display: none;
+  }
+
+  .patient-photo {
+    width: 76px;
+    height: 76px;
+    flex-basis: 76px;
+  }
+
+  .patient-details h3 {
+    font-size: 19px;
+  }
+
+  .patient-stars {
+    font-size: 21px;
+  }
+
+  .quote-mark {
+    font-size: 48px;
+  }
+
+  .testimonial-arrow {
+    top: 38%;
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+
+  .testimonial-arrow-left {
+    left: -10px;
+  }
+
+  .testimonial-arrow-right {
+    right: -10px;
+  }
+
+  .testimonial-stats {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .testimonial-stat {
+    justify-content: flex-start;
+    padding: 0 8px 14px;
+  }
+
+  .testimonial-stat + .testimonial-stat {
+    padding-top: 14px;
+    border-top: 1px solid #efb88f;
+    border-left: 0;
+  }
+
+  .stat-icon {
+    width: 54px;
+    height: 54px;
+    flex-basis: 54px;
+    font-size: 28px;
+  }
+
+  .testimonial-stat strong {
+    font-size: 25px;
+  }
+}
