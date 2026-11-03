@@ -87,7 +87,7 @@
   color: var(--about-ink);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(32px, 3.6vw, 52px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.12;
   letter-spacing: -0.03em;
 }

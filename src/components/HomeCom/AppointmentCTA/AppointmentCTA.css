@@ -107,7 +107,7 @@
   color: #281a14;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(42px, 4.15vw, 78px);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.02;
   letter-spacing: -1.6px;
 }

@@ -46,7 +46,7 @@
   margin: 16px 0 10px;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(30px, 4vw, 56px);
-  font-weight: 700;
+  font-weight: 500;
   line-height: 1.1;
 }
 
