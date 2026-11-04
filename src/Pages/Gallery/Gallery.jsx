@@ -13,48 +13,55 @@ import {
 } from "react-icons/fa";
 import "./Gallery.css";
 import cta from '../../assets/contact/cta.png'
+import image1 from '../../assets/gallery/image1.jpg'
+import image2 from '../../assets/gallery/image2.png'
+import image3 from '../../assets/gallery/image3.jpg'
+import image4 from '../../assets/gallery/image4.png'
+import image5 from '../../assets/gallery/image5.png'
+import image6 from '../../assets/gallery/image6.jpg'
+import image7 from '../../assets/gallery/image7.png'
 
 const galleryItems = [
   {
     id: 1,
     category: "Clinic Interior",
-    image: "/images/gallery-reception.jpg",
+    image: image7,
     alt: "Smile N Glow clinic reception",
   },
   {
     id: 2,
     category: "Treatment Room",
-    image: "/images/gallery-treatment-room.jpg",
+    image: image2,
     alt: "Modern dental treatment room",
   },
   {
     id: 3,
     category: "Clinic Interior",
-    image: "/images/gallery-waiting-area.jpg",
+    image: image1,
     alt: "Comfortable clinic waiting area",
   },
   {
     id: 4,
     category: "Our Team",
-    image: "/images/gallery-dentist.jpg",
+    image: image3,
     alt: "Dentist providing patient care",
   },
   {
     id: 5,
     category: "Facilities",
-    image: "/images/gallery-equipment.jpg",
+    image: image4,
     alt: "Modern dental equipment",
   },
   {
     id: 6,
     category: "Patient Smiles",
-    image: "/images/gallery-patient-smile.jpg",
+    image: image5,
     alt: "Smiling patient after dental care",
   },
   {
     id: 7,
     category: "Facilities",
-    image: "/images/gallery-dental-scan.jpg",
+    image:image6,
     alt: "Digital dental scan",
   },
 ];

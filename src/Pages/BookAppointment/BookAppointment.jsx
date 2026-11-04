@@ -7,11 +7,12 @@ import {
   FaUser,
   FaClock,
   FaTooth,
-  FaShieldAlt,
+  
   FaBell,
   FaUsers,
   FaLock,
 } from "react-icons/fa";
+import { FaShieldHalved } from "react-icons/fa6";
 import "./BookAppointment.css";
 import image1 from '../../assets/appointment/image1.png'
 import { image } from "framer-motion/client";
@@ -32,7 +33,7 @@ const benefits = [
     text: "Experienced and caring specialists",
   },
   {
-    icon: <FaCalendarAlt />,
+    icon: <FaCalendarAlt /> ,
     title: "Flexible Scheduling",
     text: "Choose a date and time that works for you",
   },
@@ -42,7 +43,7 @@ const benefits = [
     text: "Get timely updates and reminders",
   },
   {
-    icon: <FaShieldAlt />,
+    icon: <FaShieldHalved />,
     title: "Patient First Approach",
     text: "Comfort, clarity, and personalised care",
   },
@@ -95,7 +96,7 @@ function BookAppointment() {
 
           <div className="appointmentHighlights">
             <span><FaCalendarAlt /> Easy Booking</span>
-            <span><FaShieldAlt /> Secure and Private</span>
+            <span><FaShieldHalved /> Secure and Private</span>
             <span><FaClock /> Quick Confirmation</span>
           </div>
         </div>

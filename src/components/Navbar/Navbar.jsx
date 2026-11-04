@@ -1,12 +1,26 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, X, Phone, CalendarDays, ChevronDown } from "lucide-react";
+import {
+  Menu,
+  X,
+  Phone,
+  CalendarDays,
+  ChevronDown,
+} from "lucide-react";
+import logo from "../../assets/navlogo.png";
 import "./Navbar.css";
+
+const serviceItems = [
+  { label: "All Services", to: "/services" },
+  { label: "General Dentistry", to: "/services/general-dentistry" },
+  { label: "Cosmetic Dentistry", to: "/services/cosmetic-dentistry" },
+  { label: "Orthodontics", to: "/services/orthodontics" },
+  { label: "Dental Implants", to: "/services/dental-implants" },
+];
 
 const navItems = [
   { label: "Home", to: "/" },
   { label: "About", to: "/about" },
-  { label: "Services", to: "/services", hasMenu: true },
   { label: "Doctors", to: "/doctors" },
   { label: "Gallery", to: "/gallery" },
   { label: "Contact", to: "/contact" },
@@ -14,39 +28,27 @@ const navItems = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setServicesOpen(false);
+  };
 
   return (
     <header className="site-header">
       <div className="navbar">
-        <NavLink to="/" className="navbar-brand" onClick={closeMenu}>
-          <span className="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 48 56" role="img">
-              <path
-                d="M24 7C17 1 7 5 6 16c-1 8 3 14 5 21 2 8 5 14 10 13 4-1 3-10 7-10s3 9 7 10c5 1 8-5 10-13 2-7 6-13 5-21C49 5 39 1 32 7c-3 2-5 2-8 0Z"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M17 16c4 1 7 4 9 8 2-4 5-7 9-8"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </span>
-
-          <span className="brand-copy">
-            <strong>
-              Smile <em>N</em> Glow
-            </strong>
-            <small>Dental Clinic</small>
-          </span>
+        <NavLink
+          to="/"
+          className="navbar-brand"
+          aria-label="Smile N Glow Dental Clinic home"
+          onClick={closeMenu}
+        >
+          <img
+            className="navbar-logo"
+            src={logo}
+            alt="Smile N Glow Dental Clinic"
+          />
         </NavLink>
 
         <button
@@ -56,14 +58,17 @@ export default function Navbar() {
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={23} /> : <Menu size={23} />}
         </button>
 
-        <nav className={`navbar-navigation ${menuOpen ? "is-open" : ""}`}>
+        <nav
+          className={`navbar-navigation ${menuOpen ? "is-open" : ""}`}
+          aria-label="Main navigation"
+        >
           <div className="navbar-links">
-            {navItems.map((item) => (
+            {navItems.slice(0, 2).map((item) => (
               <NavLink
-                key={item.label}
+                key={item.to}
                 to={item.to}
                 end={item.to === "/"}
                 className={({ isActive }) =>
@@ -72,14 +77,53 @@ export default function Navbar() {
                 onClick={closeMenu}
               >
                 {item.label}
-                {item.hasMenu && <ChevronDown size={15} aria-hidden="true" />}
+              </NavLink>
+            ))}
+
+            <div className={`navbar-dropdown ${servicesOpen ? "is-open" : ""}`}>
+              <button
+                className="navbar-link dropdown-toggle"
+                type="button"
+                aria-expanded={servicesOpen}
+                onClick={() => setServicesOpen((open) => !open)}
+              >
+                Services
+                <ChevronDown size={15} aria-hidden="true" />
+              </button>
+
+              <div className="dropdown-menu">
+                {serviceItems.map((item) => (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
+                    className={({ isActive }) =>
+                      `dropdown-link ${isActive ? "active" : ""}`
+                    }
+                    onClick={closeMenu}
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+
+            {navItems.slice(2).map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                className={({ isActive }) =>
+                  `navbar-link ${isActive ? "active" : ""}`
+                }
+                onClick={closeMenu}
+              >
+                {item.label}
               </NavLink>
             ))}
           </div>
 
           <div className="navbar-actions">
             <a className="navbar-phone" href="tel:+919876543210">
-              <Phone size={17} aria-hidden="true" />
+              <Phone size={16} aria-hidden="true" />
               <span>+91 98765 43210</span>
             </a>
 
@@ -88,7 +132,7 @@ export default function Navbar() {
               className="navbar-appointment"
               onClick={closeMenu}
             >
-              <CalendarDays size={18} aria-hidden="true" />
+              <CalendarDays size={17} aria-hidden="true" />
               <span>Book Appointment</span>
             </NavLink>
           </div>
