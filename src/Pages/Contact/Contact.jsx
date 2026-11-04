@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import "./Contact.css";
 
 const services = [
@@ -11,7 +12,54 @@ const services = [
   "Other",
 ];
 
+const reveal = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const cardReveal = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const stagger = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
 function Contact() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const revealAnimation = shouldReduceMotion
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+    : reveal;
+
+  const cardAnimation = shouldReduceMotion
+    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+    : cardReveal;
+
+  const staggerAnimation = shouldReduceMotion
+    ? { hidden: {}, visible: {} }
+    : stagger;
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -40,7 +88,12 @@ function Contact() {
 
   return (
     <main className="contact-page">
-      <section className="contact-hero">
+      <motion.section
+        className="contact-hero"
+        variants={revealAnimation}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="contact-hero-content">
           <p className="contact-breadcrumb">
             <span>Home</span>
@@ -62,10 +115,16 @@ function Contact() {
             Book an Appointment
           </a>
         </div>
-      </section>
+      </motion.section>
 
       <section className="contact-main-section">
-        <header className="contact-section-header">
+        <motion.header
+          className="contact-section-header"
+          variants={revealAnimation}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <span className="contact-eyebrow">Get in Touch</span>
 
           <h2>
@@ -76,11 +135,20 @@ function Contact() {
             Have a question, need an appointment, or want to know more about a
             treatment? Our team is happy to assist you.
           </p>
-        </header>
+        </motion.header>
 
         <div className="contact-content-grid">
-          <div className="contact-details-list">
-            <article className="contact-info-card">
+          <motion.div
+            className="contact-details-list"
+            variants={staggerAnimation}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.12 }}
+          >
+            <motion.article
+              className="contact-info-card"
+              variants={cardAnimation}
+            >
               <div className="contact-info-icon" aria-hidden="true">
                 <span>⌖</span>
               </div>
@@ -100,9 +168,12 @@ function Contact() {
                 <span aria-hidden="true">↗</span>
                 Get Directions
               </a>
-            </article>
+            </motion.article>
 
-            <article className="contact-info-card">
+            <motion.article
+              className="contact-info-card"
+              variants={cardAnimation}
+            >
               <div className="contact-info-icon" aria-hidden="true">
                 <span>☎</span>
               </div>
@@ -116,9 +187,12 @@ function Contact() {
                 <span aria-hidden="true">▣</span>
                 Call Now
               </a>
-            </article>
+            </motion.article>
 
-            <article className="contact-info-card">
+            <motion.article
+              className="contact-info-card"
+              variants={cardAnimation}
+            >
               <div className="contact-info-icon" aria-hidden="true">
                 <span>✉</span>
               </div>
@@ -135,9 +209,12 @@ function Contact() {
                 <span aria-hidden="true">➤</span>
                 Send Email
               </a>
-            </article>
+            </motion.article>
 
-            <article className="contact-info-card">
+            <motion.article
+              className="contact-info-card"
+              variants={cardAnimation}
+            >
               <div className="contact-info-icon" aria-hidden="true">
                 <span>◉</span>
               </div>
@@ -156,10 +233,17 @@ function Contact() {
                 <span aria-hidden="true">◉</span>
                 Chat Now
               </a>
-            </article>
-          </div>
+            </motion.article>
+          </motion.div>
 
-          <section className="contact-form-card" id="appointment">
+          <motion.section
+            className="contact-form-card"
+            id="appointment"
+            variants={revealAnimation}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
             <div className="contact-form-heading">
               <span className="contact-form-heading-icon" aria-hidden="true">
                 ▦
@@ -268,11 +352,20 @@ function Contact() {
                 Book Appointment
               </button>
             </form>
-          </section>
+          </motion.section>
         </div>
 
-        <div className="contact-location-grid">
-          <section className="contact-map-card">
+        <motion.div
+          className="contact-location-grid"
+          variants={staggerAnimation}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          <motion.section
+            className="contact-map-card"
+            variants={cardAnimation}
+          >
             <iframe
               title="Smile N Glow Dental Clinic location"
               src="https://maps.google.com/maps?q=Kantilal%20Chhotalal%2C%20Sinhagad%20Road%2C%20Pune&t=&z=14&ie=UTF8&iwloc=&output=embed"
@@ -295,9 +388,12 @@ function Contact() {
                 View on Google Maps <span aria-hidden="true">↗</span>
               </a>
             </div>
-          </section>
+          </motion.section>
 
-          <section className="contact-hours-card">
+          <motion.section
+            className="contact-hours-card"
+            variants={cardAnimation}
+          >
             <div className="contact-hours-heading">
               <span aria-hidden="true">◷</span>
               <h2>Clinic Timings</h2>
@@ -318,29 +414,37 @@ function Contact() {
               <strong>Sunday</strong>
               <span>10:00 AM – 2:00 PM</span>
             </div>
-          </section>
-        </div>
+          </motion.section>
+        </motion.div>
       </section>
 
-      <section className="contact-cta">
+      <motion.section
+        className="contact-cta"
+        variants={revealAnimation}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <div className="contact-cta-content">
           <p className="contact-cta-eyebrow">Your smile matters</p>
+
           <h2>
             Ready for a Healthier,
             <span> Brighter Smile?</span>
           </h2>
+
           <p>
             Book your appointment today and take the first step towards better
             oral health.
           </p>
         </div>
 
-        <a className="contact-cta-button" href="appointment">
+        <a className="contact-cta-button" href="/book-appointment">
           <span aria-hidden="true">▦</span>
           Book an Appointment
           <span aria-hidden="true">›</span>
         </a>
-      </section>
+      </motion.section>
     </main>
   );
 }

@@ -1,57 +1,33 @@
 import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   FaCalendarAlt,
+  FaClock,
+  FaUser,
   FaPhoneAlt,
   FaEnvelope,
-  FaMapMarkerAlt,
-  FaUser,
-  FaClock,
   FaTooth,
-  
-  FaBell,
-  FaUsers,
-  FaLock,
+  FaShieldAlt,
 } from "react-icons/fa";
-import { FaShieldHalved } from "react-icons/fa6";
 import "./BookAppointment.css";
-import image1 from '../../assets/appointment/image1.png'
-import { image } from "framer-motion/client";
+
 const services = [
   "General Dental Checkup",
   "Teeth Cleaning",
-  "Teeth Whitening",
-  "Root Canal Treatment",
-  "Dental Implants",
-  "Braces and Aligners",
   "Cosmetic Dentistry",
+  "Dental Implants",
+  "Root Canal Treatment",
+  "Orthodontic Treatment",
 ];
 
-const benefits = [
-  {
-    icon: <FaUsers />,
-    title: "Expert Dental Team",
-    text: "Experienced and caring specialists",
-  },
-  {
-    icon: <FaCalendarAlt /> ,
-    title: "Flexible Scheduling",
-    text: "Choose a date and time that works for you",
-  },
-  {
-    icon: <FaBell />,
-    title: "Appointment Reminder",
-    text: "Get timely updates and reminders",
-  },
-  {
-    icon: <FaShieldHalved />,
-    title: "Patient First Approach",
-    text: "Comfort, clarity, and personalised care",
-  },
-];
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
 
-function BookAppointment() {
+export default function BookAppointment() {
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     phone: "",
     email: "",
     service: "",
@@ -60,143 +36,129 @@ function BookAppointment() {
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const reduceMotion = useReducedMotion();
 
-  const updateField = (event) => {
-    setFormData({
-      ...formData,
-      [event.target.name]: event.target.value,
-    });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setSubmitted(true);
-
-    // Connect this form to your booking API or WhatsApp workflow.
     console.log("Appointment request:", formData);
   };
 
-  return (
-    <main className="appointmentPage">
-      <section className="appointmentHero">
-        <div className="appointmentHeroOverlay" />
+  const animation = reduceMotion
+    ? {}
+    : {
+        initial: "hidden",
+        whileInView: "visible",
+        viewport: { once: true, amount: 0.15 },
+        variants: fadeUp,
+        transition: { duration: 0.65, ease: "easeOut" },
+      };
 
-        <div className="appointmentHeroContent">
-          <p className="appointmentBreadcrumb">Home <span>›</span> Book Appointment</p>
+  return (
+    <main className="appointment-page">
+      <section className="appointment-hero">
+        <div className="appointment-hero__overlay" />
+
+        <motion.div className="appointment-hero__content" {...animation}>
+          <span className="appointment-eyebrow">
+            <FaCalendarAlt />
+            Book Your Visit
+          </span>
 
           <h1>
-            Book an
-            <span> Appointment</span>
+            Your Smile Deserves
+            <br />
+            <span>Expert Care</span>
           </h1>
 
-          <p className="appointmentHeroText">
-            Schedule a visit with our dental experts at your convenience.
+          <p>
+            Schedule your appointment with our dental care team. We look
+            forward to welcoming you.
           </p>
-
-          <div className="appointmentHighlights">
-            <span><FaCalendarAlt /> Easy Booking</span>
-            <span><FaShieldHalved /> Secure and Private</span>
-            <span><FaClock /> Quick Confirmation</span>
-          </div>
-        </div>
+        </motion.div>
       </section>
 
-      <section className="appointmentMain">
-        <div className="appointmentPhoto">
-          <img
-            src={image1}
-            alt="Patient smiling in a dental clinic"
-          />
+      <section className="appointment-section">
+        <motion.div className="appointment-intro" {...animation}>
+          <span className="appointment-kicker">Appointment Request</span>
+          <h2>Let’s Plan Your Visit</h2>
+          <p>
+            Share a few details below and our team will contact you to confirm
+            your appointment.
+          </p>
+        </motion.div>
 
-          <div className="appointmentPhotoCaption">
-            <FaTooth />
-            <h2>A Healthier Smile Starts with a Visit</h2>
-            <span />
-          </div>
-        </div>
-
-        <div className="appointmentFormCard">
-          <div className="appointmentFormHeading">
-            <div className="appointmentHeadingIcon">
-              <FaCalendarAlt />
+        <div className="appointment-layout">
+          <motion.form
+            className="appointment-form"
+            onSubmit={handleSubmit}
+            {...animation}
+          >
+            <div className="appointment-form__heading">
+              <h3>Appointment Details</h3>
+              <p>Fields marked with * are required.</p>
             </div>
 
-            <div>
-              <h2>Book an <span>Appointment</span></h2>
-              <p>Fill in your details and our team will get back to you shortly.</p>
-            </div>
-          </div>
-
-          {submitted ? (
-            <div className="appointmentSuccess" role="status">
-              <FaCalendarAlt />
-              <h3>Thank you for your request!</h3>
-              <p>Our team will contact you to confirm your appointment.</p>
-              <button type="button" onClick={() => setSubmitted(false)}>
-                Book Another Appointment
-              </button>
-            </div>
-          ) : (
-            <form className="appointmentForm" onSubmit={handleSubmit}>
-              <label>
-                Full Name <span>*</span>
-                <div className="appointmentInputWrap">
+            <div className="appointment-fields">
+              <label className="appointment-field">
+                <span>Full Name *</span>
+                <div className="appointment-input-wrap">
                   <FaUser />
                   <input
                     type="text"
-                    name="fullName"
-                    placeholder="Enter your name"
-                    value={formData.fullName}
-                    onChange={updateField}
-                    autoComplete="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    value={formData.name}
+                    onChange={handleChange}
                     required
                   />
                 </div>
               </label>
 
-              <label>
-                Phone Number <span>*</span>
-                <div className="appointmentInputWrap">
+              <label className="appointment-field">
+                <span>Phone Number *</span>
+                <div className="appointment-input-wrap">
                   <FaPhoneAlt />
                   <input
                     type="tel"
                     name="phone"
                     placeholder="Enter your phone number"
                     value={formData.phone}
-                    onChange={updateField}
-                    autoComplete="tel"
+                    onChange={handleChange}
                     required
                   />
                 </div>
               </label>
 
-              <label>
-                Email Address
-                <div className="appointmentInputWrap">
+              <label className="appointment-field appointment-field--full">
+                <span>Email Address</span>
+                <div className="appointment-input-wrap">
                   <FaEnvelope />
                   <input
                     type="email"
                     name="email"
-                    placeholder="Enter your email"
+                    placeholder="Enter your email address"
                     value={formData.email}
-                    onChange={updateField}
-                    autoComplete="email"
+                    onChange={handleChange}
                   />
                 </div>
               </label>
 
-              <label>
-                Service or Treatment <span>*</span>
-                <div className="appointmentInputWrap">
+              <label className="appointment-field appointment-field--full">
+                <span>Choose a Service *</span>
+                <div className="appointment-input-wrap">
                   <FaTooth />
                   <select
                     name="service"
                     value={formData.service}
-                    onChange={updateField}
+                    onChange={handleChange}
                     required
                   >
-                    <option value="">Select a service</option>
+                    <option value="">Select a dental service</option>
                     {services.map((service) => (
                       <option key={service} value={service}>
                         {service}
@@ -206,113 +168,107 @@ function BookAppointment() {
                 </div>
               </label>
 
-              <label>
-                Preferred Date
-                <div className="appointmentInputWrap">
+              <label className="appointment-field">
+                <span>Preferred Date *</span>
+                <div className="appointment-input-wrap">
                   <FaCalendarAlt />
                   <input
                     type="date"
                     name="date"
                     value={formData.date}
-                    onChange={updateField}
+                    onChange={handleChange}
                     min={new Date().toISOString().split("T")[0]}
+                    required
                   />
                 </div>
               </label>
 
-              <label>
-                Preferred Time
-                <div className="appointmentInputWrap">
+              <label className="appointment-field">
+                <span>Preferred Time *</span>
+                <div className="appointment-input-wrap">
                   <FaClock />
                   <select
                     name="time"
                     value={formData.time}
-                    onChange={updateField}
+                    onChange={handleChange}
+                    required
                   >
                     <option value="">Select a time</option>
                     <option value="10:00 AM">10:00 AM</option>
                     <option value="11:00 AM">11:00 AM</option>
                     <option value="12:00 PM">12:00 PM</option>
-                    <option value="2:00 PM">2:00 PM</option>
-                    <option value="3:00 PM">3:00 PM</option>
-                    <option value="4:00 PM">4:00 PM</option>
-                    <option value="5:00 PM">5:00 PM</option>
+                    <option value="02:00 PM">02:00 PM</option>
+                    <option value="03:00 PM">03:00 PM</option>
+                    <option value="04:00 PM">04:00 PM</option>
+                    <option value="05:00 PM">05:00 PM</option>
                   </select>
                 </div>
               </label>
 
-              <label className="appointmentMessageField">
-                Your Message
+              <label className="appointment-field appointment-field--full">
+                <span>Additional Message</span>
                 <textarea
                   name="message"
-                  placeholder="Tell us about your concern (optional)"
-                  value={formData.message}
-                  onChange={updateField}
                   rows="4"
+                  placeholder="Tell us about your concern or any special request"
+                  value={formData.message}
+                  onChange={handleChange}
                 />
               </label>
+            </div>
 
-              <button className="appointmentSubmit" type="submit">
-                <FaCalendarAlt />
-                Confirm Appointment
-              </button>
+            <motion.button
+              className="appointment-submit"
+              type="submit"
+              whileHover={reduceMotion ? {} : { y: -3 }}
+              whileTap={reduceMotion ? {} : { scale: 0.98 }}
+            >
+              Request Appointment
+              <span aria-hidden="true">↗</span>
+            </motion.button>
 
-              <p className="appointmentPrivacy">
-                <FaLock />
-                Your information is safe with us and will only be used for
-                appointment purposes.
+            <p className="appointment-form__note">
+              <FaShieldAlt />
+              Your information will be kept private.
+            </p>
+          </motion.form>
+
+          <motion.aside className="appointment-side" {...animation}>
+            <div className="appointment-side__image">
+              <img
+                src="/images/appointment-clinic.jpg"
+                alt="Modern dental clinic"
+              />
+            </div>
+
+            <div className="appointment-side__content">
+              <span className="appointment-kicker">Your Visit</span>
+              <h3>Comfortable care, from the very first visit.</h3>
+              <p>
+                Our team will help you choose a convenient time and guide you
+                through your treatment options.
               </p>
-            </form>
-          )}
-        </div>
 
-        <aside className="appointmentBenefits">
-          <h2>Why Book with Us?</h2>
-          <span className="appointmentBenefitsLine" />
-
-          <div className="appointmentBenefitsList">
-            {benefits.map((benefit) => (
-              <article className="appointmentBenefit" key={benefit.title}>
-                <div className="appointmentBenefitIcon">{benefit.icon}</div>
+              <div className="appointment-side__detail">
+                <FaClock />
                 <div>
-                  <h3>{benefit.title}</h3>
-                  <p>{benefit.text}</p>
+                  <strong>Clinic Hours</strong>
+                  <span>Monday to Saturday</span>
+                  <span>10:00 AM to 6:00 PM</span>
                 </div>
-              </article>
-            ))}
-          </div>
-        </aside>
-      </section>
+              </div>
 
-      
-
-      <section className="appointmentContact">
-        <article className="appointmentContactCard">
-          <div><FaPhoneAlt /></div>
-          <section>
-            <h3>Call Us</h3>
-            <p>+91 98765 43210</p>
-          </section>
-        </article>
-
-        <article className="appointmentContactCard">
-          <div><FaEnvelope /></div>
-          <section>
-            <h3>Email Us</h3>
-            <p>care@smilenglowdental.in</p>
-          </section>
-        </article>
-
-        <article className="appointmentContactCard">
-          <div><FaMapMarkerAlt /></div>
-          <section>
-            <h3>Clinic Address</h3>
-            <p>Kantilal Chhotalal, Sinhagad Road, Pune, Maharashtra</p>
-          </section>
-        </article>
+              <div className="appointment-side__detail">
+                <FaPhoneAlt />
+                <div>
+                  <strong>Need Assistance?</strong>
+                  <span>Call our clinic to schedule your visit.</span>
+                </div>
+              </div>
+            </div>
+          </motion.aside>
+        </div>
       </section>
     </main>
   );
 }
-
-export default BookAppointment;

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import "./Doctors.css";
 
 const doctors = [
@@ -87,10 +88,61 @@ const doctors = [
   },
 ];
 
+const reveal = {
+  hidden: {
+    opacity: 0,
+    y: 28,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const cardReveal = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 function Doctors() {
+  const shouldReduceMotion = useReducedMotion();
+
+  const revealAnimation = shouldReduceMotion
+    ? {
+        hidden: { opacity: 1 },
+        visible: { opacity: 1 },
+      }
+    : reveal;
+
+  const cardAnimation = shouldReduceMotion
+    ? {
+        hidden: { opacity: 1 },
+        visible: { opacity: 1 },
+      }
+    : cardReveal;
+
   return (
     <main className="doctors-page">
-      <section className="doctors-hero">
+      <motion.section
+        className="doctors-hero"
+        variants={revealAnimation}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="doctors-hero-content">
           <p className="doctors-breadcrumb">
             <span>Home</span>
@@ -115,44 +167,83 @@ function Doctors() {
             Book an Appointment
           </a>
         </div>
-      </section>
+      </motion.section>
 
       <section className="doctors-team-section">
-        <div className="doctors-benefits">
-          <article className="doctors-benefit">
-            <span className="benefit-icon" aria-hidden="true">♧</span>
+        <motion.div
+          className="doctors-benefits"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: shouldReduceMotion ? 0 : 0.12,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
+          <motion.article
+            className="doctors-benefit"
+            variants={cardAnimation}
+          >
+            <span className="benefit-icon" aria-hidden="true">
+              ♧
+            </span>
             <div>
               <h3>Experienced Team</h3>
               <p>Specialists across key dental fields</p>
             </div>
-          </article>
+          </motion.article>
 
-          <article className="doctors-benefit">
-            <span className="benefit-icon" aria-hidden="true">◇</span>
+          <motion.article
+            className="doctors-benefit"
+            variants={cardAnimation}
+          >
+            <span className="benefit-icon" aria-hidden="true">
+              ◇
+            </span>
             <div>
               <h3>Patient First Care</h3>
               <p>Comfort, safety, and clear guidance</p>
             </div>
-          </article>
+          </motion.article>
 
-          <article className="doctors-benefit">
-            <span className="benefit-icon" aria-hidden="true">♡</span>
+          <motion.article
+            className="doctors-benefit"
+            variants={cardAnimation}
+          >
+            <span className="benefit-icon" aria-hidden="true">
+              ♡
+            </span>
             <div>
               <h3>Comprehensive Care</h3>
               <p>From prevention to advanced treatments</p>
             </div>
-          </article>
+          </motion.article>
 
-          <article className="doctors-benefit">
-            <span className="benefit-icon" aria-hidden="true">♡</span>
+          <motion.article
+            className="doctors-benefit"
+            variants={cardAnimation}
+          >
+            <span className="benefit-icon" aria-hidden="true">
+              ♡
+            </span>
             <div>
               <h3>Trusted by Patients</h3>
               <p>For quality care and lasting smiles</p>
             </div>
-          </article>
-        </div>
+          </motion.article>
+        </motion.div>
 
-        <header className="doctors-section-header">
+        <motion.header
+          className="doctors-section-header"
+          variants={revealAnimation}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <span className="doctors-eyebrow">Our Team</span>
 
           <h2>
@@ -165,11 +256,28 @@ function Doctors() {
             needs. We take time to listen, explain your options, and help you
             feel confident at every step.
           </p>
-        </header>
+        </motion.header>
 
-        <div className="doctors-grid">
+        <motion.div
+          className="doctors-grid"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: shouldReduceMotion ? 0 : 0.1,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.08 }}
+        >
           {doctors.map((doctor) => (
-            <article className="doctor-card" key={doctor.name}>
+            <motion.article
+              className="doctor-card"
+              key={doctor.name}
+              variants={cardAnimation}
+            >
               <div className="doctor-image">
                 {doctor.image ? (
                   <img
@@ -202,9 +310,9 @@ function Doctors() {
 
                 <p className="doctor-description">{doctor.description}</p>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </section>
     </main>
   );

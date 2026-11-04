@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   FaThLarge,
   FaTooth,
@@ -11,15 +12,16 @@ import {
   FaChevronLeft,
   FaChevronRight,
 } from "react-icons/fa";
+
 import "./Gallery.css";
-import cta from '../../assets/contact/cta.png'
-import image1 from '../../assets/gallery/image1.jpg'
-import image2 from '../../assets/gallery/image2.png'
-import image3 from '../../assets/gallery/image3.jpg'
-import image4 from '../../assets/gallery/image4.png'
-import image5 from '../../assets/gallery/image5.png'
-import image6 from '../../assets/gallery/image6.jpg'
-import image7 from '../../assets/gallery/image7.png'
+import cta from "../../assets/contact/cta.png";
+import image1 from "../../assets/gallery/image1.jpg";
+import image2 from "../../assets/gallery/image2.png";
+import image3 from "../../assets/gallery/image3.jpg";
+import image4 from "../../assets/gallery/image4.png";
+import image5 from "../../assets/gallery/image5.png";
+import image6 from "../../assets/gallery/image6.jpg";
+import image7 from "../../assets/gallery/image7.png";
 
 const galleryItems = [
   {
@@ -61,7 +63,7 @@ const galleryItems = [
   {
     id: 7,
     category: "Facilities",
-    image:image6,
+    image: image6,
     alt: "Digital dental scan",
   },
 ];
@@ -75,9 +77,54 @@ const filters = [
   { label: "Facilities", icon: <FaCouch /> },
 ];
 
+const reveal = {
+  hidden: {
+    opacity: 0,
+    y: 28,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const itemReveal = {
+  hidden: {
+    opacity: 0,
+    y: 22,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 function Gallery() {
   const [activeFilter, setActiveFilter] = useState("All Photos");
   const [activeImage, setActiveImage] = useState(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  const revealAnimation = shouldReduceMotion
+    ? {
+        hidden: { opacity: 1 },
+        visible: { opacity: 1 },
+      }
+    : reveal;
+
+  const itemAnimation = shouldReduceMotion
+    ? {
+        hidden: { opacity: 1 },
+        visible: { opacity: 1 },
+      }
+    : itemReveal;
 
   const visibleItems =
     activeFilter === "All Photos"
@@ -90,6 +137,7 @@ function Gallery() {
     );
     const previousIndex =
       (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+
     setActiveImage(galleryItems[previousIndex]);
   };
 
@@ -98,40 +146,73 @@ function Gallery() {
       (item) => item.id === activeImage.id
     );
     const nextIndex = (currentIndex + 1) % galleryItems.length;
+
     setActiveImage(galleryItems[nextIndex]);
   };
 
   return (
     <main className="galleryPage">
-      <section className="galleryHero">
+      <motion.section
+        className="galleryHero"
+        variants={revealAnimation}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="galleryHeroShade" />
+
         <div className="galleryHeroContent">
-          <p className="galleryBreadcrumb">Home <span>›</span> Gallery</p>
+          <p className="galleryBreadcrumb">
+            Home <span>›</span> Gallery
+          </p>
+
           <h1>
             Our <span>Gallery</span>
           </h1>
+
           <p>
             A glimpse of our clinic, advanced facilities, and the smiles we
             have helped create.
           </p>
         </div>
-      </section>
+      </motion.section>
 
       <section className="gallerySection">
-        <div className="galleryIntro">
+        <motion.div
+          className="galleryIntro"
+          variants={revealAnimation}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           <span className="galleryEyebrow">Explore Our Clinic</span>
+
           <h2>
             Moments at Smile <span>N Glow</span>
           </h2>
+
           <p>
             Take a look at our modern clinic, advanced technology, and the
             comfortable care experience we offer.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="galleryFilters" aria-label="Filter gallery photos">
+        <motion.div
+          className="galleryFilters"
+          aria-label="Filter gallery photos"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: shouldReduceMotion ? 0 : 0.07,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+        >
           {filters.map((filter) => (
-            <button
+            <motion.button
               className={
                 activeFilter === filter.label
                   ? "galleryFilter active"
@@ -141,33 +222,56 @@ function Gallery() {
               type="button"
               onClick={() => setActiveFilter(filter.label)}
               aria-pressed={activeFilter === filter.label}
+              variants={itemAnimation}
             >
               {filter.icon}
               {filter.label}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="galleryGrid">
+        <motion.div
+          className="galleryGrid"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: shouldReduceMotion ? 0 : 0.09,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.08 }}
+        >
           {visibleItems.map((item) => (
-            <button
+            <motion.button
               className="galleryPhoto"
               key={item.id}
               type="button"
               onClick={() => setActiveImage(item)}
               aria-label={`View ${item.alt}`}
+              variants={itemAnimation}
+              layout
             >
               <img src={item.image} alt={item.alt} loading="lazy" />
+
               <span className="galleryPhotoOverlay">
                 <FaCamera />
                 View Photo
               </span>
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
       </section>
 
-      <section className="galleryCta">
+      <motion.section
+        className="galleryCta"
+        variants={revealAnimation}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.15 }}
+      >
         <div className="galleryCtaImage">
           <img
             src={cta}
@@ -178,20 +282,23 @@ function Gallery() {
 
         <div className="galleryCtaContent">
           <p>Your Smile Matters</p>
+
           <h2>
             Ready for Your <span>Next Dental Visit?</span>
           </h2>
+
           <p>
             Book an appointment today and experience personalised dental care
             in a comfortable environment.
           </p>
+
           <a href="/book-appointment" className="galleryCtaButton">
             <FaCalendarAlt />
             Book an Appointment
             <span aria-hidden="true">›</span>
           </a>
         </div>
-      </section>
+      </motion.section>
 
       {activeImage && (
         <div
