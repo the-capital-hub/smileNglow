@@ -85,7 +85,7 @@ export default function About() {
             comfort and a more confident smile.
           </p>
 
-          <a className="about-button about-button-orange" href="/contact">
+          <a className="about-button about-button-orange" href="/book-appointment">
             <CalendarDays size={18} aria-hidden="true" />
             Book Appointment
           </a>
@@ -210,7 +210,7 @@ export default function About() {
           </p>
         </div>
 
-        <a className="about-button about-button-light" href="/contact">
+        <a className="about-button about-button-light" href="/book-appointment">
           <CalendarDays size={18} aria-hidden="true" />
           Book Appointment
           <ArrowRight size={18} aria-hidden="true" />
