@@ -1,24 +1,24 @@
 import "./PatientTestimonials.css";
-
+import image1 from '../../../assets/image2.png'
 const reviews = [
   {
     name: "Priya Sharma",
     location: "Pune, Maharashtra",
-    image: "/images/patient-priya.jpg",
+    image: image1,
     review:
       "A very comfortable and professional experience. The team is friendly and explained the treatment clearly. Highly recommended!",
   },
   {
     name: "Rohit Verma",
     location: "Pune, Maharashtra",
-    image: "/images/patient-rohit.jpg",
+    image: image1,
     review:
       "I did my root canal treatment here and it was completely painless. The clinic is clean, modern and well equipped.",
   },
   {
     name: "Ananya Desai",
     location: "Pune, Maharashtra",
-    image: "/images/patient-ananya.jpg",
+    image: image1,
     review:
       "Excellent dental care and a very supportive team. My teeth cleaning session was quick, gentle and effective. I am very happy with the results.",
   },

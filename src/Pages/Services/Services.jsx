@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   CalendarDays,
@@ -23,6 +24,7 @@ import extractionImage from "../../assets/services/tooth-extraction.jpg";
 const services = [
   {
     title: "General Dentistry",
+    slug: "general-dentistry",
     description:
       "Routine checkups, cleaning and preventive care for long term oral health.",
     image: generalImage,
@@ -31,6 +33,7 @@ const services = [
   },
   {
     title: "Dental Implants",
+    slug: "dental-implants",
     description:
       "A lasting option to replace missing teeth and restore your smile.",
     image: implantImage,
@@ -39,6 +42,7 @@ const services = [
   },
   {
     title: "Orthodontic Treatment",
+    slug: "orthodontic-treatment",
     description:
       "Teeth alignment solutions including braces and clear aligners.",
     image: orthodonticImage,
@@ -47,6 +51,7 @@ const services = [
   },
   {
     title: "Cosmetic Dentistry",
+    slug: "cosmetic-dentistry",
     description:
       "Enhance your smile with treatments like whitening and veneers.",
     image: cosmeticImage,
@@ -55,6 +60,7 @@ const services = [
   },
   {
     title: "Root Canal Treatment",
+    slug: "root-canal-treatment",
     description:
       "Treatment to help save your natural tooth and relieve discomfort.",
     image: rootCanalImage,
@@ -63,6 +69,7 @@ const services = [
   },
   {
     title: "Tooth Extraction",
+    slug: "tooth-extraction",
     description:
       "Careful removal of damaged or problematic teeth when needed.",
     image: extractionImage,
@@ -120,7 +127,7 @@ export default function Services() {
       <section className="services-hero">
         <div className="services-hero-inner services-reveal">
           <p className="services-breadcrumb">
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
             <span aria-hidden="true">›</span>
             Services
           </p>
@@ -134,10 +141,13 @@ export default function Services() {
             and confident smile.
           </p>
 
-          <a className="services-button services-button-orange" href="/contact">
+          <Link
+            className="services-button services-button-orange"
+            to="/book-appointment"
+          >
             <CalendarDays size={18} aria-hidden="true" />
             Book Appointment
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -151,30 +161,36 @@ export default function Services() {
         </div>
 
         <div className="services-grid">
-          {services.map(({ title, description, image, icon: Icon, alt }, index) => (
-            <article
-              className="service-card services-reveal"
-              key={title}
-              style={{ "--services-delay": `${index * 70}ms` }}
-            >
-              <div className="service-card-image">
-                <img src={image} alt={alt} loading="lazy" />
-              </div>
+          {services.map(
+            ({ title, slug, description, image, icon: Icon, alt }, index) => (
+              <article
+                className="service-card services-reveal"
+                key={slug}
+                style={{ "--services-delay": `${index * 70}ms` }}
+              >
+                <div className="service-card-image">
+                  <img src={image} alt={alt} loading="lazy" />
+                </div>
 
-              <span className="service-card-icon">
-                <Icon size={30} strokeWidth={1.7} aria-hidden="true" />
-              </span>
+                <span className="service-card-icon">
+                  <Icon size={30} strokeWidth={1.7} aria-hidden="true" />
+                </span>
 
-              <div className="service-card-content">
-                <h3>{title}</h3>
-                <p>{description}</p>
-                <a href="/contact" className="service-card-link">
-                  Learn More
-                  <ArrowRight size={18} aria-hidden="true" />
-                </a>
-              </div>
-            </article>
-          ))}
+                <div className="service-card-content">
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+
+                  <Link
+                    to={`/services/${slug}`}
+                    className="service-card-link"
+                  >
+                    Learn More
+                    <ArrowRight size={18} aria-hidden="true" />
+                  </Link>
+                </div>
+              </article>
+            )
+          )}
         </div>
       </section>
 
@@ -198,6 +214,7 @@ export default function Services() {
               </span>
               <h3>{title}</h3>
               <p>{text}</p>
+
               {index < steps.length - 1 && (
                 <ArrowRight
                   className="services-step-arrow"
@@ -225,11 +242,14 @@ export default function Services() {
           </p>
         </div>
 
-        <a className="services-button services-button-light" href="/contact">
+        <Link
+          className="services-button services-button-light"
+          to="/book-appointment"
+        >
           <CalendarDays size={18} aria-hidden="true" />
           Book Appointment
           <ArrowRight size={18} aria-hidden="true" />
-        </a>
+        </Link>
       </section>
     </main>
   );

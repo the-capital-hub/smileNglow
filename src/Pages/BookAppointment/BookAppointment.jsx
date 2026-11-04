@@ -10,6 +10,7 @@ import {
   FaShieldAlt,
 } from "react-icons/fa";
 import "./BookAppointment.css";
+import image1 from '../../assets/appointment/image1.png'
 
 const services = [
   "General Dental Checkup",
@@ -38,16 +39,6 @@ export default function BookAppointment() {
 
   const reduceMotion = useReducedMotion();
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((previous) => ({ ...previous, [name]: value }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Appointment request:", formData);
-  };
-
   const animation = reduceMotion
     ? {}
     : {
@@ -57,6 +48,24 @@ export default function BookAppointment() {
         variants: fadeUp,
         transition: { duration: 0.65, ease: "easeOut" },
       };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("Appointment request:", formData);
+    alert("Thank you. Your appointment request has been received.");
+  };
+
+  const today = new Date();
+  const localToday = new Date(
+    today.getTime() - today.getTimezoneOffset() * 60000
+  )
+    .toISOString()
+    .split("T")[0];
 
   return (
     <main className="appointment-page">
@@ -107,13 +116,14 @@ export default function BookAppointment() {
               <label className="appointment-field">
                 <span>Full Name *</span>
                 <div className="appointment-input-wrap">
-                  <FaUser />
+                  <FaUser aria-hidden="true" />
                   <input
                     type="text"
                     name="name"
                     placeholder="Enter your full name"
                     value={formData.name}
                     onChange={handleChange}
+                    autoComplete="name"
                     required
                   />
                 </div>
@@ -122,13 +132,16 @@ export default function BookAppointment() {
               <label className="appointment-field">
                 <span>Phone Number *</span>
                 <div className="appointment-input-wrap">
-                  <FaPhoneAlt />
+                  <FaPhoneAlt aria-hidden="true" />
                   <input
                     type="tel"
                     name="phone"
                     placeholder="Enter your phone number"
                     value={formData.phone}
                     onChange={handleChange}
+                    autoComplete="tel"
+                    pattern="[0-9+\s()]{10,15}"
+                    title="Enter a valid phone number"
                     required
                   />
                 </div>
@@ -137,13 +150,14 @@ export default function BookAppointment() {
               <label className="appointment-field appointment-field--full">
                 <span>Email Address</span>
                 <div className="appointment-input-wrap">
-                  <FaEnvelope />
+                  <FaEnvelope aria-hidden="true" />
                   <input
                     type="email"
                     name="email"
                     placeholder="Enter your email address"
                     value={formData.email}
                     onChange={handleChange}
+                    autoComplete="email"
                   />
                 </div>
               </label>
@@ -151,7 +165,7 @@ export default function BookAppointment() {
               <label className="appointment-field appointment-field--full">
                 <span>Choose a Service *</span>
                 <div className="appointment-input-wrap">
-                  <FaTooth />
+                  <FaTooth aria-hidden="true" />
                   <select
                     name="service"
                     value={formData.service}
@@ -171,13 +185,13 @@ export default function BookAppointment() {
               <label className="appointment-field">
                 <span>Preferred Date *</span>
                 <div className="appointment-input-wrap">
-                  <FaCalendarAlt />
+                  <FaCalendarAlt aria-hidden="true" />
                   <input
                     type="date"
                     name="date"
                     value={formData.date}
                     onChange={handleChange}
-                    min={new Date().toISOString().split("T")[0]}
+                    min={localToday}
                     required
                   />
                 </div>
@@ -186,7 +200,7 @@ export default function BookAppointment() {
               <label className="appointment-field">
                 <span>Preferred Time *</span>
                 <div className="appointment-input-wrap">
-                  <FaClock />
+                  <FaClock aria-hidden="true" />
                   <select
                     name="time"
                     value={formData.time}
@@ -228,7 +242,7 @@ export default function BookAppointment() {
             </motion.button>
 
             <p className="appointment-form__note">
-              <FaShieldAlt />
+              <FaShieldAlt aria-hidden="true" />
               Your information will be kept private.
             </p>
           </motion.form>
@@ -236,7 +250,7 @@ export default function BookAppointment() {
           <motion.aside className="appointment-side" {...animation}>
             <div className="appointment-side__image">
               <img
-                src="/images/appointment-clinic.jpg"
+                src={image1}
                 alt="Modern dental clinic"
               />
             </div>
@@ -250,7 +264,7 @@ export default function BookAppointment() {
               </p>
 
               <div className="appointment-side__detail">
-                <FaClock />
+                <FaClock aria-hidden="true" />
                 <div>
                   <strong>Clinic Hours</strong>
                   <span>Monday to Saturday</span>
@@ -259,7 +273,7 @@ export default function BookAppointment() {
               </div>
 
               <div className="appointment-side__detail">
-                <FaPhoneAlt />
+                <FaPhoneAlt aria-hidden="true" />
                 <div>
                   <strong>Need Assistance?</strong>
                   <span>Call our clinic to schedule your visit.</span>

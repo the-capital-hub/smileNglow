@@ -124,7 +124,7 @@ function BranchesSection() {
 
                 <div className="branch-actions">
                   <a
-                    href={`tel:${branch.phone}`}
+                    href='/book-appointment'
                     className="branch-btn branch-btn-primary"
                   >
                     <CalendarDays size={18} aria-hidden="true" />
