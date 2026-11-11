@@ -41,13 +41,13 @@ export default function Navbar() {
         <NavLink
           to="/"
           className="navbar-brand"
-          aria-label="Smile N Glow Dental Clinic home"
+          aria-label="Smile N Glow Vasan home"
           onClick={closeMenu}
         >
           <img
             className="navbar-logo"
             src={logo}
-            alt="Smile N Glow Dental Clinic"
+            alt="Smile N Glow Vasan"
           />
         </NavLink>
 

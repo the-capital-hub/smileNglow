@@ -56,12 +56,12 @@ export default function AboutUs() {
           </span>
 
           <h2 id="about-us-title">
-            About Smile N Glow
-            <span> Dental Clinic</span>
+            About Smile N Glow Vasan
+            <span> </span>
           </h2>
 
           <p className="about-us-description">
-            At Smile N Glow Dental Clinic, we are committed to providing
+            At Smile N Glow Vasan, we are committed to providing
             thoughtful, compassionate and personalized dental care. Our goal
             is to help every patient work towards a healthy, confident smile.
           </p>

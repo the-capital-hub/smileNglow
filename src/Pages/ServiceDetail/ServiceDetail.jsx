@@ -174,7 +174,7 @@ export default function ServiceDetail() {
             <span aria-current="page">{service.title}</span>
           </nav>
 
-          <span className="service-detail-eyebrow">Smile N Glow Dental Clinic</span>
+          <span className="service-detail-eyebrow">Smile N Glow Vasan</span>
           <h1>{service.title}</h1>
           <p>{service.subtitle}</p>
 
@@ -252,7 +252,7 @@ export default function ServiceDetail() {
         </div>
 
         <div className="service-detail-cta-copy">
-          <span>Smile N Glow Dental Clinic</span>
+          <span>Smile N Glow Vasan</span>
           <h2>Ready to Plan Your Visit?</h2>
           <p>Contact our team to discuss your dental care options.</p>
         </div>

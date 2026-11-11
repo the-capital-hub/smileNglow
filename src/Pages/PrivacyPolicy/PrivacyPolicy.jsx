@@ -69,7 +69,7 @@ const PrivacyPolicy = () => {
             <span>Privacy Policy</span>
           </nav>
 
-          <p className="privacy-eyebrow">Smile N Glow Dental Clinic</p>
+          <p className="privacy-eyebrow">Smile N Glow Dental Vasan</p>
           <h1>
             Privacy <span>Policy</span>
           </h1>

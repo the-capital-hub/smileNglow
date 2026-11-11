@@ -110,7 +110,7 @@ export default function About() {
           </h2>
 
           <p>
-            At Smile N Glow Dental Clinic, we are passionate about
+            At Smile N Glow Vasan, we are passionate about
             delivering personalized dental care in a comfortable and
             welcoming environment. We combine professional expertise,
             modern technology and a patient first approach to help you
@@ -167,7 +167,7 @@ export default function About() {
         <div className="about-section-heading about-reveal">
           <span className="about-eyebrow">Why Choose Us</span>
           <h2>
-            The Smile N Glow <span>Difference</span>
+            The Smile N Glow Vasan <span>Difference</span>
           </h2>
           <span className="about-heading-line" aria-hidden="true" />
         </div>

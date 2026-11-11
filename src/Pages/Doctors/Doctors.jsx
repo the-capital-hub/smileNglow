@@ -290,7 +290,7 @@ function Doctors() {
                     <span className="placeholder-mark" aria-hidden="true">
                       ♡
                     </span>
-                    <span>Smile N Glow</span>
+                    <span>Smile N Glow Vasan</span>
                   </div>
                 )}
               </div>

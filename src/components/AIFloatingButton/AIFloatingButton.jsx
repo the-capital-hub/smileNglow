@@ -41,7 +41,7 @@ function AIFloatingButton() {
               </span>
 
               <div>
-                <h3>Smile N Glow Assistant</h3>
+                <h3>Smile N Glow Vasan Assistant</h3>
                 <p>Your dental care companion</p>
               </div>
             </div>

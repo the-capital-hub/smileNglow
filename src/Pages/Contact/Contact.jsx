@@ -155,8 +155,8 @@ function Contact() {
 
               <div className="contact-info-copy">
                 <h3>Clinic Address</h3>
-                <p>Kantilal Chhotalal,</p>
-                <p>Sinhagad Road, Pune, Maharashtra</p>
+                <p>1192, 22nd Cross Road</p>
+                <p>HSR Layout, Bengaluru, Karnataka 560102</p>
               </div>
 
               <a
@@ -180,10 +180,10 @@ function Contact() {
 
               <div className="contact-info-copy">
                 <h3>Call Us</h3>
-                <p>+91 98765 43210</p>
+                <p>+91 7483456238</p>
               </div>
 
-              <a className="contact-info-action" href="tel:+919876543210">
+              <a className="contact-info-action" href="tel:+91 7483456238">
                 <span aria-hidden="true">▣</span>
                 Call Now
               </a>
