@@ -1,7 +1,16 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import "./Doctors.css";
-
+import adithya from '../../assets/docotor/adithya.png'
+import andesh from '../../assets/docotor/andesh.png'
+import kiran from '../../assets/docotor/kiran.png'
+import martin from '../../assets/docotor/martin.png'
+import rajio from '../../assets/docotor/rajio.png'
+import sahar from '../../assets/docotor/sahar.png'
+import sanketh from '../../assets/docotor/sanketh.png'
+import sarfaraz from '../../assets/docotor/sarfaraz.png'
+import sushant from '../../assets/docotor/sushant.png'
+import yajwin from '../../assets/docotor/yajwin.png'
 const doctors = [
   {
     name: "Dr. Kiran Sunny",
@@ -10,7 +19,7 @@ const doctors = [
     description:
       "Focused on thoughtful treatment planning and long term oral health.",
     image:
-      "https://smile-and-glow-flex-public.s3.ap-south-1.amazonaws.com/cms-media/images/kiran-sunny.jpeg",
+      kiran,
   },
   {
     name: "Dr. Raijo Thomas",
@@ -19,7 +28,7 @@ const doctors = [
     description:
       "Dedicated to clear guidance and comfortable dental visits.",
     image:
-      "https://smile-and-glow-flex-public.s3.ap-south-1.amazonaws.com/cms-media/images/rajio-thomas.jpeg",
+      rajio,
   },
   {
     name: "Dr. Sushant",
@@ -28,23 +37,23 @@ const doctors = [
     description:
       "Supporting patients through oral surgery with attentive care.",
     image:
-      "https://smile-and-glow-flex-public.s3.ap-south-1.amazonaws.com/cms-media/images/sushant.jpeg",
+      sushant,
   },
   {
-    name: "Dr. Sirish",
+    name: "Dr. Adithya",
     role: "Endodontist",
     qualification: "BDS, MDS • Endodontist",
     description:
       "Focused on caring treatment for tooth pain and root canal needs.",
-    image: "",
+    image: adithya,
   },
   {
-    name: "Dr. Sanket",
+    name: "Dr. Andesh",
     role: "Pedodontist",
     qualification: "BDS, MDS • Pedodontist",
     description:
       "Helping children feel safe and comfortable during dental visits.",
-    image: "",
+    image:andesh,
   },
   {
     name: "Dr. Martin",
@@ -52,7 +61,7 @@ const doctors = [
     qualification: "BDS, MDS • Endodontist",
     description:
       "Focused on preserving natural teeth and easing dental discomfort.",
-    image: "",
+    image: martin,
   },
   {
     name: "Dr. Sarfaraz",
@@ -60,7 +69,7 @@ const doctors = [
     qualification: "BDS",
     description:
       "Supporting everyday dental health through preventive and restorative care.",
-    image: "",
+    image: sarfaraz,
   },
   {
     name: "Dr. Sahar",
@@ -68,15 +77,23 @@ const doctors = [
     qualification: "BDS, MDS • Periodontist",
     description:
       "Focused on gum health and the care of supporting tissues.",
-    image: "",
+    image: sahar,
   },
   {
-    name: "Dr. Sai Kalyan",
+    name: "Dr Sanketh",
     role: "Orthodontist",
     qualification: "BDS, MDS • Orthodontist",
     description:
       "Helping patients work toward healthier bites and confident smiles.",
-    image: "",
+    image: sanketh,
+  },
+  {
+    name: "Dr Yajwin",
+    role: "Orthodontist",
+    qualification: "BDS, MDS • Orthodontist",
+    description:
+      "Helping patients work toward healthier bites and confident smiles.",
+    image: yajwin,
   },
   {
     name: "Pramod",

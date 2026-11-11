@@ -187,7 +187,7 @@ function Gallery() {
           <span className="galleryEyebrow">Explore Our Clinic</span>
 
           <h2>
-            Moments at Smile <span>N Glow Vasan</span>
+            Moments at Smile <span>& Glow Vasan</span>
           </h2>
 
           <p>
