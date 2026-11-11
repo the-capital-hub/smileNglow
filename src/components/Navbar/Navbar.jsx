@@ -124,7 +124,7 @@ export default function Navbar() {
           <div className="navbar-actions">
             <a className="navbar-phone" href="tel:+919876543210">
               <Phone size={16} aria-hidden="true" />
-              <span>+91 98765 43210</span>
+              <span>+91 7483456238</span>
             </a>
 
             <NavLink

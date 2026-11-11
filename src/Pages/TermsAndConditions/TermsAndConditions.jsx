@@ -72,7 +72,7 @@ const TermsAndConditions = () => {
             <span>Terms and Conditions</span>
           </nav>
 
-          <p className="terms-eyebrow">Smile N Glow Vasan</p>
+          <p className="terms-eyebrow">Smile and Glow Vasan</p>
           <h1>
             Terms and <span>Conditions</span>
           </h1>

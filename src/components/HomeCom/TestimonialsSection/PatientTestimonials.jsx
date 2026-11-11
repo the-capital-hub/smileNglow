@@ -1,30 +1,65 @@
+
+import { useRef } from "react";
 import "./PatientTestimonials.css";
-import image1 from '../../../assets/image2.png'
+
+import image from "../../../assets/image2.png";
+import image1 from "../../../assets/testi/image1.png";
+import image2 from "../../../assets/testi/image2.png";
+import image3 from "../../../assets/testi/image3.png";
+import image4 from "../../../assets/testi/image4.png";
+
 const reviews = [
   {
-    name: "Priya Sharma",
-    location: "Pune, Maharashtra",
-    image: image1,
+    name: "Vivek Jain",
+    location: "Bengaluru, Karnataka",
+    image,
     review:
       "A very comfortable and professional experience. The team is friendly and explained the treatment clearly. Highly recommended!",
   },
   {
-    name: "Rohit Verma",
-    location: "Pune, Maharashtra",
-    image: image1,
+    name: "Nalini Mahanty",
+    location: "Bengaluru, Karnataka",
+    image: image4,
     review:
-      "I did my root canal treatment here and it was completely painless. The clinic is clean, modern and well equipped.",
+      "The treatment service has been really good. Got my RCT done here 2 weeks prior and it's been great. It cost me around 7k, pretty good price for Bangalore. My mom got her extraction done too. Highly recommended",
   },
   {
-    name: "Ananya Desai",
-    location: "Pune, Maharashtra",
+    name: "Aruna A",
+    location: "Bengaluru, Karnataka",
+    image: image3,
+    review:
+      "I have got my wisdom tooth. Before coming here I had visited few clinics which they scared me to hell but here they really take care of our emotions and let me feel comfortable. The extraction was really painless and I was at ease. Extraordinary service for their team. Highly recommended",
+  },
+  {
+    name: "Sarath Meluveetil",
+    location: "Bengaluru, Karnataka",
+    image: image2,
+    review:
+      "I had an excellent experience at this dental clinic. The team is highly professional, approachable, and always willing to help. Dr. Kiran Sunny, in particular, stands out for his expertise and the courteous way he interacts with patients. He takes the time to explain every detail clearly, ensuring that I understood the treatment options and felt comfortable throughout the process. His professionalism, combined with his kind and patient nature, truly makes a difference. I would highly recommend this clinic to anyone seeking quality dental care with a personal touch.",
+  },
+  {
+    name: "Sandip Kumar",
+    location: "Bengaluru, Karnataka",
     image: image1,
     review:
-      "Excellent dental care and a very supportive team. My teeth cleaning session was quick, gentle and effective. I am very happy with the results.",
+      "I had a great experience at Smile & Glow Vasan. I went for teeth cleaning, polishing, and filing, and the entire procedure was smooth and comfortable. The doctor was very knowledgeable, explained everything clearly, and made sure I was at ease throughout the treatment. The staff was professional, and the clinic was clean and well-maintained. I'm very satisfied with the treatment and would definitely recommend Smile & Glow Vasan to anyone looking for quality dental care.",
   },
 ];
 
 function PatientTestimonials() {
+  const sliderRef = useRef(null);
+
+  const scrollSlider = (direction) => {
+    if (!sliderRef.current) return;
+
+    const slider = sliderRef.current;
+
+    slider.scrollBy({
+      left: direction * slider.clientWidth * 0.8,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="testimonials-section">
       <div className="testimonial-tooth" aria-hidden="true">
@@ -52,11 +87,12 @@ function PatientTestimonials() {
           className="testimonial-arrow testimonial-arrow-left"
           type="button"
           aria-label="Previous reviews"
+          onClick={() => scrollSlider(-1)}
         >
           ‹
         </button>
 
-        <div className="testimonial-grid">
+        <div className="testimonial-grid" ref={sliderRef}>
           {reviews.map((review) => (
             <article className="testimonial-card" key={review.name}>
               <div className="testimonial-card-top">
@@ -94,6 +130,7 @@ function PatientTestimonials() {
           className="testimonial-arrow testimonial-arrow-right"
           type="button"
           aria-label="Next reviews"
+          onClick={() => scrollSlider(1)}
         >
           ›
         </button>

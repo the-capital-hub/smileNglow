@@ -367,8 +367,8 @@ function Contact() {
             variants={cardAnimation}
           >
             <iframe
-              title="Smile N Glow Dental Clinic location"
-              src="https://maps.google.com/maps?q=Kantilal%20Chhotalal%2C%20Sinhagad%20Road%2C%20Pune&t=&z=14&ie=UTF8&iwloc=&output=embed"
+              title="Smile and Glow Dental Vasan Clinic location"
+              src="https://maps.app.goo.gl/thNcH4y9BQAzY5s99"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
@@ -377,11 +377,12 @@ function Contact() {
             <div className="contact-map-caption">
               <div>
                 <h3>Find Us on Map</h3>
-                <p>Kantilal Chhotalal, Sinhagad Road, Pune, Maharashtra</p>
+                <p>1192, 22nd Cross Road, 24th Main Rd, Sector 2, HSR Layout, Bengaluru, Karnataka 560102
+</p>
               </div>
 
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Kantilal+Chhotalal+Sinhagad+Road+Pune"
+                href="https://maps.app.goo.gl/thNcH4y9BQAzY5s99"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -404,7 +405,7 @@ function Contact() {
                 ▦
               </span>
               <strong>Monday to Saturday</strong>
-              <span>10:00 AM – 8:00 PM</span>
+              <span>10:00 AM – 9:00 PM</span>
             </div>
 
             <div className="contact-hours-row">
@@ -412,7 +413,7 @@ function Contact() {
                 ▦
               </span>
               <strong>Sunday</strong>
-              <span>10:00 AM – 2:00 PM</span>
+              <span>10:00 AM – 9:00 PM</span>
             </div>
           </motion.section>
         </motion.div>

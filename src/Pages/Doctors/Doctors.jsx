@@ -1,109 +1,168 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import "./Doctors.css";
-import adithya from '../../assets/docotor/adithya.png'
-import andesh from '../../assets/docotor/andesh.png'
-import kiran from '../../assets/docotor/kiran.png'
-import martin from '../../assets/docotor/martin.png'
-import rajio from '../../assets/docotor/rajio.png'
-import sahar from '../../assets/docotor/sahar.png'
-import sanketh from '../../assets/docotor/sanketh.png'
-import sarfaraz from '../../assets/docotor/sarfaraz.png'
-import sushant from '../../assets/docotor/sushant.png'
-import yajwin from '../../assets/docotor/yajwin.png'
+
+import adithya from "../../assets/docotor/adithya.png";
+import andesh from "../../assets/docotor/andesh.png";
+import kiran from "../../assets/docotor/kiran.png";
+import martin from "../../assets/docotor/martin.png";
+import rajio from "../../assets/docotor/rajio.png";
+import sahar from "../../assets/docotor/sahar.png";
+import sanketh from "../../assets/docotor/sanketh.png";
+import sarfaraz from "../../assets/docotor/sarfaraz.png";
+import sushant from "../../assets/docotor/sushant.png";
+import yajwin from "../../assets/docotor/yajwin.png";
+
+/* Doctor Data */
+
 const doctors = [
   {
+    id: "kiran",
     name: "Dr. Kiran Sunny",
-    role: "Chief Dentist",
+    role: "Resident Doctor",
     qualification: "BDS, MDS • Prosthodontist",
     description:
       "Focused on thoughtful treatment planning and long term oral health.",
-    image:
-      kiran,
+    image: kiran,
+    branches: ["HSR", "Jayanagar", "Silk Institute"],
+    category: "resident",
   },
   {
-    name: "Dr. Raijo Thomas",
-    role: "Chief Dentist",
-    qualification: "BDS",
-    description:
-      "Dedicated to clear guidance and comfortable dental visits.",
-    image:
-      rajio,
-  },
-  {
-    name: "Dr. Sushant",
-    role: "Oral Surgeon",
-    qualification: "BDS, MDS • Oral Surgeon",
-    description:
-      "Supporting patients through oral surgery with attentive care.",
-    image:
-      sushant,
-  },
-  {
-    name: "Dr. Adithya",
-    role: "Endodontist",
-    qualification: "BDS, MDS • Endodontist",
-    description:
-      "Focused on caring treatment for tooth pain and root canal needs.",
-    image: adithya,
-  },
-  {
-    name: "Dr. Andesh",
-    role: "Pedodontist",
-    qualification: "BDS, MDS • Pedodontist",
-    description:
-      "Helping children feel safe and comfortable during dental visits.",
-    image:andesh,
-  },
-  {
-    name: "Dr. Martin",
-    role: "Endodontist",
-    qualification: "BDS, MDS • Endodontist",
-    description:
-      "Focused on preserving natural teeth and easing dental discomfort.",
-    image: martin,
-  },
-  {
+    id: "sarfaraz",
     name: "Dr. Sarfaraz",
-    role: "General Dentist",
+    role: "Resident Doctor",
     qualification: "BDS",
     description:
       "Supporting everyday dental health through preventive and restorative care.",
     image: sarfaraz,
+    branches: ["HSR"],
+    category: "resident",
   },
   {
-    name: "Dr. Sahar",
-    role: "Periodontist",
-    qualification: "BDS, MDS • Periodontist",
+    id: "vaishak",
+    name: "Dr. Vaishak",
+    role: "Resident Doctor",
+    qualification: "BDS",
     description:
-      "Focused on gum health and the care of supporting tissues.",
-    image: sahar,
+      "Dedicated to clear guidance and comfortable dental visits.",
+    image: andesh,
+    branches: ["Jayanagar"],
+    category: "resident",
   },
   {
-    name: "Dr Sanketh",
-    role: "Orthodontist",
+    id: "raijo",
+    name: "Dr. Raijo Thomas",
+    role: "Resident Doctor",
+    qualification: "BDS",
+    description:
+      "Dedicated to clear guidance and comfortable dental visits.",
+    image: rajio,
+    branches: ["Silk Institute"],
+    category: "resident",
+  },
+  {
+    id: "sushant",
+    name: "Dr. Sushant",
+    role: "Consultant",
+    qualification: "BDS, MDS • Oral Surgeon",
+    description:
+      "Supporting patients through oral surgery with attentive care.",
+    image: sushant,
+    branches: ["HSR", "Jayanagar", "Silk Institute"],
+    category: "consultant",
+  },
+  {
+    id: "sanket",
+    name: "Dr. Sanket",
+    role: "Consultant",
     qualification: "BDS, MDS • Orthodontist",
     description:
       "Helping patients work toward healthier bites and confident smiles.",
     image: sanketh,
+    branches: ["HSR", "Jayanagar", "Silk Institute"],
+    category: "consultant",
   },
   {
-    name: "Dr Yajwin",
-    role: "Orthodontist",
+    id: "martin",
+    name: "Dr. Martin",
+    role: "Consultant",
+    qualification: "BDS, MDS • Endodontist",
+    description:
+      "Focused on preserving natural teeth and easing dental discomfort.",
+    image: martin,
+    branches: ["HSR", "Jayanagar", "Silk Institute"],
+    category: "consultant",
+  },
+  {
+    id: "sai-kalyan",
+    name: "Dr. Sai Kalyan",
+    role: "Consultant",
+    qualification: "",
+    description:
+      "Dedicated to providing attentive and patient focused dental care.",
+    image: "",
+    branches: ["HSR"],
+    category: "consultant",
+  },
+  {
+    id: "sahar",
+    name: "Dr. Sahar",
+    role: "Consultant",
+    qualification: "BDS, MDS • Periodontist",
+    description:
+      "Focused on gum health and the care of supporting tissues.",
+    image: sahar,
+    branches: ["HSR", "Jayanagar"],
+    category: "consultant",
+  },
+  {
+    id: "kalyan",
+    name: "Dr. Kalyan",
+    role: "Consultant",
+    qualification: "",
+    description:
+      "Dedicated to providing attentive and patient focused dental care.",
+    image: "",
+    branches: ["Jayanagar", "Silk Institute"],
+    category: "consultant",
+  },
+  {
+    id: "yajwin",
+    name: "Dr. Yajwin",
+    role: "Consultant",
     qualification: "BDS, MDS • Orthodontist",
     description:
       "Helping patients work toward healthier bites and confident smiles.",
     image: yajwin,
+    branches: ["Jayanagar"],
+    category: "consultant",
   },
   {
-    name: "Pramod",
-    role: "Manager",
-    qualification: "",
+    id: "sandesh",
+    name: "Dr. Sandesh",
+    role: "Consultant",
+    qualification: "BDS, MDS • Orthodontist",
     description:
-      "Helping make appointments and clinic visits smooth and organized.",
+      "Helping patients work toward healthier bites and confident smiles.",
     image: "",
+    branches: ["Silk Institute"],
+    category: "consultant",
+  },
+  {
+    id: "aditya",
+    name: "Dr. Aditya",
+    role: "Consultant",
+    qualification: "BDS, MDS • Endodontist",
+    description:
+      "Focused on caring treatment for tooth pain and root canal needs.",
+    image: adithya,
+    branches: ["Silk Institute"],
+    category: "consultant",
   },
 ];
+
+/* Animations */
 
 const reveal = {
   hidden: {
@@ -135,8 +194,12 @@ const cardReveal = {
   },
 };
 
+const branches = ["HSR", "Jayanagar", "Silk Institute"];
+
 function Doctors() {
   const shouldReduceMotion = useReducedMotion();
+
+  const [activeBranch, setActiveBranch] = useState("HSR");
 
   const revealAnimation = shouldReduceMotion
     ? {
@@ -152,8 +215,101 @@ function Doctors() {
       }
     : cardReveal;
 
+  /* Filter doctors according to selected branch */
+
+  const branchDoctors = doctors.filter((doctor) =>
+    doctor.branches.includes(activeBranch)
+  );
+
+  const residents = branchDoctors.filter(
+    (doctor) => doctor.category === "resident"
+  );
+
+  const consultants = branchDoctors.filter(
+    (doctor) => doctor.category === "consultant"
+  );
+
+  /* Doctor Card */
+
+  const renderDoctorCards = (doctorList) =>
+    doctorList.map((doctor) => (
+      <motion.article
+        className="doctor-card"
+        key={doctor.id}
+        variants={cardAnimation}
+      >
+        <div className="doctor-image">
+          {doctor.image ? (
+            <img
+              src={doctor.image}
+              alt={doctor.name}
+              loading="lazy"
+            />
+          ) : (
+            <div className="doctor-image-placeholder">
+              <span className="placeholder-mark" aria-hidden="true">
+                ♡
+              </span>
+              <span>Smile and Glow Vasan</span>
+            </div>
+          )}
+        </div>
+
+        <div className="doctor-content">
+          <h3>{doctor.name}</h3>
+
+          <span className="doctor-role">{doctor.role}</span>
+
+          {doctor.qualification && (
+            <p className="doctor-qualification">
+              <span className="qualification-icon" aria-hidden="true">
+                ✦
+              </span>
+              {doctor.qualification}
+            </p>
+          )}
+
+          <p className="doctor-description">
+            {doctor.description}
+          </p>
+        </div>
+      </motion.article>
+    ));
+
+  /* Doctor Category */
+
+  const renderDoctorSection = (title, doctorList) => {
+    if (!doctorList.length) return null;
+
+    return (
+      <div className="doctor-category-section">
+        <h3 className="doctor-category-title">{title}</h3>
+
+        <motion.div
+          className="doctors-grid"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: shouldReduceMotion ? 0 : 0.1,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.08 }}
+        >
+          {renderDoctorCards(doctorList)}
+        </motion.div>
+      </div>
+    );
+  };
+
   return (
     <main className="doctors-page">
+
+      {/* Hero Section */}
+
       <motion.section
         className="doctors-hero"
         variants={revealAnimation}
@@ -186,7 +342,12 @@ function Doctors() {
         </div>
       </motion.section>
 
+      {/* Team Section */}
+
       <section className="doctors-team-section">
+
+        {/* Benefits */}
+
         <motion.div
           className="doctors-benefits"
           variants={{
@@ -208,6 +369,7 @@ function Doctors() {
             <span className="benefit-icon" aria-hidden="true">
               ♧
             </span>
+
             <div>
               <h3>Experienced Team</h3>
               <p>Specialists across key dental fields</p>
@@ -221,6 +383,7 @@ function Doctors() {
             <span className="benefit-icon" aria-hidden="true">
               ◇
             </span>
+
             <div>
               <h3>Patient First Care</h3>
               <p>Comfort, safety, and clear guidance</p>
@@ -234,6 +397,7 @@ function Doctors() {
             <span className="benefit-icon" aria-hidden="true">
               ♡
             </span>
+
             <div>
               <h3>Comprehensive Care</h3>
               <p>From prevention to advanced treatments</p>
@@ -247,12 +411,15 @@ function Doctors() {
             <span className="benefit-icon" aria-hidden="true">
               ♡
             </span>
+
             <div>
               <h3>Trusted by Patients</h3>
               <p>For quality care and lasting smiles</p>
             </div>
           </motion.article>
         </motion.div>
+
+        {/* Section Heading */}
 
         <motion.header
           className="doctors-section-header"
@@ -275,61 +442,91 @@ function Doctors() {
           </p>
         </motion.header>
 
-        <motion.div
-          className="doctors-grid"
-          variants={{
-            hidden: {},
-            visible: {
-              transition: {
-                staggerChildren: shouldReduceMotion ? 0 : 0.1,
-              },
-            },
-          }}
+        {/* Branch Selector */}
+
+        <div className="doctors-branch-selector">
+          {branches.map((branch) => (
+            <button
+              key={branch}
+              type="button"
+              className={`doctors-branch-button ${
+                activeBranch === branch ? "active" : ""
+              }`}
+              onClick={() => setActiveBranch(branch)}
+              aria-pressed={activeBranch === branch}
+            >
+              {branch}
+            </button>
+          ))}
+        </div>
+
+        {/* Branch Heading */}
+
+        <div className="doctors-branch-heading">
+          <h2>{activeBranch} Branch</h2>
+          <p>Meet our dental care team</p>
+        </div>
+
+        {/* Residents and Consultants */}
+
+        {renderDoctorSection("Resident Doctors", residents)}
+
+        {renderDoctorSection("Consultants", consultants)}
+
+        {/* Appointment CTA */}
+
+        <motion.section
+          className="doctors-cta"
+          variants={revealAnimation}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.08 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
-          {doctors.map((doctor) => (
-            <motion.article
-              className="doctor-card"
-              key={doctor.name}
-              variants={cardAnimation}
-            >
-              <div className="doctor-image">
-                {doctor.image ? (
-                  <img
-                    src={doctor.image}
-                    alt={doctor.name}
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="doctor-image-placeholder">
-                    <span className="placeholder-mark" aria-hidden="true">
-                      ♡
-                    </span>
-                    <span>Smile N Glow Vasan</span>
-                  </div>
-                )}
-              </div>
+          <div
+            className="doctors-cta-decoration"
+            aria-hidden="true"
+          >
+            ♡
+          </div>
 
-              <div className="doctor-content">
-                <h3>{doctor.name}</h3>
-                <span className="doctor-role">{doctor.role}</span>
+          <div className="doctors-cta-content">
+            <span className="doctors-cta-eyebrow">
+              YOUR SMILE MATTERS
+            </span>
 
-                {doctor.qualification && (
-                  <p className="doctor-qualification">
-                    <span className="qualification-icon" aria-hidden="true">
-                      ✦
-                    </span>
-                    {doctor.qualification}
-                  </p>
-                )}
+            <h2>
+              Ready for a Healthier <span>Smile?</span>
+            </h2>
 
-                <p className="doctor-description">{doctor.description}</p>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
+            <p>
+              Book a consultation with our expert dental team at the{" "}
+              {activeBranch} branch.
+            </p>
+          </div>
+
+          <div className="doctors-cta-features">
+            <div className="doctors-cta-feature">
+              <span aria-hidden="true">▦</span>
+              <p>Easy Booking</p>
+            </div>
+
+            <div className="doctors-cta-feature">
+              <span aria-hidden="true">◇</span>
+              <p>Trusted Experts</p>
+            </div>
+
+            <div className="doctors-cta-feature">
+              <span aria-hidden="true">♡</span>
+              <p>Personalized Care</p>
+            </div>
+          </div>
+
+          <a href="/contact" className="doctors-cta-button">
+            Book an Appointment
+            <span aria-hidden="true">→</span>
+          </a>
+        </motion.section>
+
       </section>
     </main>
   );

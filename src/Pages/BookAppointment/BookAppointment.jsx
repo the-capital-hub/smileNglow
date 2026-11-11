@@ -267,8 +267,8 @@ export default function BookAppointment() {
                 <FaClock aria-hidden="true" />
                 <div>
                   <strong>Clinic Hours</strong>
-                  <span>Monday to Saturday</span>
-                  <span>10:00 AM to 6:00 PM</span>
+                  <span>Monday to Sunday</span>
+                  <span>10:00 AM to 9:00 PM</span>
                 </div>
               </div>
 

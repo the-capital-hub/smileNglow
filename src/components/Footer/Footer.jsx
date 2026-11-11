@@ -96,7 +96,7 @@ function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p>© {new Date().getFullYear()} Smile N Glow Dental Clinic</p>
+          <p>© {new Date().getFullYear()} Smile and Glow Vasan</p>
           <div>
             <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/terms-and-conditions">Terms and Conditions</Link>

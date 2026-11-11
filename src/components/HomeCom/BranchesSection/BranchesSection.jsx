@@ -11,39 +11,39 @@ import image1 from '../../../assets/home/image1.png'
 const branches = [
   {
     name: "HSR Layout",
-    subtitle: "Smile & Glow Vasan",
+    subtitle: "Smile and Glow Vasan",
     image: image1,
     address:
       "1192, 22nd Cross Road, 24th Main Rd, Sector 2, HSR Layout, Bengaluru, Karnataka 560102",
     phone: "+917483456238",
     displayPhone: "+91 7483456238",
-    hours: "Mon to Sun • 10:30 AM to 9:30 PM",
+    hours: "Mon to Sun • 10:00 AM to 9:30 PM",
     mapUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=1192%2C%2022nd%20Cross%20Road%2C%2024th%20Main%20Rd%2C%20Sector%202%2C%20HSR%20Layout%2C%20Bengaluru%2C%20Karnataka%20560102",
+      "https://maps.app.goo.gl/p5MQFinjnTYTe6S39",
   },
   {
     name: "Silk Institute",
-    subtitle: "Smile & Glow Vasan",
+    subtitle: "Smile and Glow Vasan",
     image: image1,
     address:
       "Metro Pillar 311, 2nd floor, Shiva Complex, Kanakapura Main Rd, near Elegant Whispering Winds Apartment, Nagegowdanapalya, Bengaluru",
     phone: "+917204428301",
     displayPhone: "+91 7204428301",
-    hours: "Mon to Sun • 10:30 AM to 9 PM",
+    hours: "Mon to Sun • 10:00 AM to 9 PM",
     mapUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=Metro%20Pillar%20311%202nd%20floor%2C%20Shiva%20Complex%2C%20Kanakapura%20Main%20Rd%2C%20near%20Elegant%20Whispering%20Winds%20Apartment%2C%20Nagegowdanapalya%2C%20Bengaluru%2C%20Karnataka%20560062",
+      "https://maps.app.goo.gl/wXWA6bSF5DVKh92h7",
   },
   {
     name: "Jayanagar",
-    subtitle: "Smile & Glow Vasan",
+    subtitle: "Smile and Glow Vasan",
     image: image1,
     address:
       "138/37, 6th C Main Road, 4th Block, Jayanagar, Bengaluru, Karnataka 560011",
     phone: "+917760839626",
     displayPhone: "+91 7760839626",
-    hours: "Mon to Sun • 10:30 AM to 8 PM",
+    hours: "Mon to Sun • 10:00 AM to 8 PM",
     mapUrl:
-      "https://www.google.com/maps/dir/?api=1&destination=138%2F37%2C%206th%20C%20Main%20Road%2C%204th%20Block%2C%20Jayanagar%2C%20Bengaluru%2C%20Karnataka%20560011",
+      "https://maps.app.goo.gl/q9U6PV1MUtMwYsBa8",
   },
 ];
 
