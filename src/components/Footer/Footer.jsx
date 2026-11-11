@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Clock3, ArrowUpRight } from "lucide-react";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/navlogo.png";
 import image1 from "../../assets/home/image1.png";
 import "./Footer.css";
 
