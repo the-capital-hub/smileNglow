@@ -12,7 +12,7 @@ const reviews = [
   {
     name: "Vivek Jain",
     location: "Bengaluru, Karnataka",
-    image,
+    image: "",
     review:
       "A very comfortable and professional experience. The team is friendly and explained the treatment clearly. Highly recommended!",
   },
