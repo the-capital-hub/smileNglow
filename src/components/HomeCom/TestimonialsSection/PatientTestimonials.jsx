@@ -1,5 +1,5 @@
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import "./PatientTestimonials.css";
 
 import image from "../../../assets/image2.png";
@@ -49,23 +49,145 @@ const reviews = [
 function PatientTestimonials() {
   const sliderRef = useRef(null);
 
-  const scrollSlider = (direction) => {
-    if (!sliderRef.current) return;
+  const [activeReview, setActiveReview] = useState(0);
+  const [visibleCards, setVisibleCards] = useState(3);
 
+  // Responsive number of visible cards
+  useEffect(() => {
+    const updateVisibleCards = () => {
+      if (window.innerWidth <= 700) {
+        setVisibleCards(1);
+      } else if (window.innerWidth <= 1100) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(3);
+      }
+    };
+
+    updateVisibleCards();
+
+    window.addEventListener("resize", updateVisibleCards);
+
+    return () => {
+      window.removeEventListener("resize", updateVisibleCards);
+    };
+  }, []);
+
+  const maxIndex = Math.max(
+    0,
+    reviews.length - visibleCards
+  );
+
+  // Scroll to a particular card
+  const scrollToReview = (index) => {
     const slider = sliderRef.current;
 
-    slider.scrollBy({
-      left: direction * slider.clientWidth * 0.8,
+    if (!slider) return;
+
+    const cards = slider.querySelectorAll(
+      ".testimonial-card"
+    );
+
+    if (!cards.length) return;
+
+    const safeIndex = Math.max(
+      0,
+      Math.min(index, maxIndex)
+    );
+
+    const firstCard = cards[0];
+    const targetCard = cards[safeIndex];
+
+    const targetPosition =
+      targetCard.offsetLeft - firstCard.offsetLeft;
+
+    slider.scrollTo({
+      left: targetPosition,
       behavior: "smooth",
     });
+
+    setActiveReview(safeIndex);
   };
+
+  // Left and right arrows
+  const scrollSlider = (direction) => {
+    scrollToReview(activeReview + direction);
+  };
+
+  // Sync dots when user swipes manually
+  const handleSliderScroll = () => {
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+    const cards = Array.from(
+      slider.querySelectorAll(".testimonial-card")
+    );
+
+    if (!cards.length) return;
+
+    const firstOffset = cards[0].offsetLeft;
+
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    cards.forEach((card, index) => {
+      if (index > maxIndex) return;
+
+      const cardPosition =
+        card.offsetLeft - firstOffset;
+
+      const distance = Math.abs(
+        slider.scrollLeft - cardPosition
+      );
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    setActiveReview(closestIndex);
+  };
+
+  // Keep slider aligned on resize
+  useEffect(() => {
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+    const cards = slider.querySelectorAll(
+      ".testimonial-card"
+    );
+
+    if (!cards.length) return;
+
+    const safeIndex = Math.min(activeReview, maxIndex);
+
+    const targetPosition =
+      cards[safeIndex].offsetLeft -
+      cards[0].offsetLeft;
+
+    slider.scrollTo({
+      left: targetPosition,
+      behavior: "instant",
+    });
+
+    if (safeIndex !== activeReview) {
+      setActiveReview(safeIndex);
+    }
+  }, [visibleCards, maxIndex]);
 
   return (
     <section className="testimonials-section">
-      <div className="testimonial-tooth" aria-hidden="true">
+      <div
+        className="testimonial-tooth"
+        aria-hidden="true"
+      >
         ♡
       </div>
 
+      {/* Heading */}
       <div className="testimonials-heading">
         <span className="testimonials-label">
           <span className="label-icon">☏</span>
@@ -77,24 +199,33 @@ function PatientTestimonials() {
         </h2>
 
         <p>
-          Real experiences from our happy patients who trusted us with their
-          smile.
+          Real experiences from our happy patients
+          who trusted us with their smile.
         </p>
       </div>
 
+      {/* Carousel */}
       <div className="testimonials-carousel">
         <button
           className="testimonial-arrow testimonial-arrow-left"
           type="button"
           aria-label="Previous reviews"
+          disabled={activeReview === 0}
           onClick={() => scrollSlider(-1)}
         >
           ‹
         </button>
 
-        <div className="testimonial-grid" ref={sliderRef}>
+        <div
+          className="testimonial-grid"
+          ref={sliderRef}
+          onScroll={handleSliderScroll}
+        >
           {reviews.map((review) => (
-            <article className="testimonial-card" key={review.name}>
+            <article
+              className="testimonial-card"
+              key={review.name}
+            >
               <div className="testimonial-card-top">
                 <img
                   className="patient-photo"
@@ -105,23 +236,39 @@ function PatientTestimonials() {
 
                 <div className="patient-details">
                   <h3>{review.name}</h3>
+
                   <p className="patient-location">
-                    <span aria-hidden="true">●</span> {review.location}
+                    <span aria-hidden="true">●</span>
+                    {" "}
+                    {review.location}
                   </p>
-                  <div className="patient-stars" aria-label="5 out of 5 stars">
+
+                  <div
+                    className="patient-stars"
+                    aria-label="5 out of 5 stars"
+                  >
                     ★★★★★
                   </div>
                 </div>
 
-                <span className="quote-mark" aria-hidden="true">
+                <span
+                  className="quote-mark"
+                  aria-hidden="true"
+                >
                   ”
                 </span>
               </div>
 
               <div className="testimonial-divider" />
 
-              <p className="patient-review">{review.review}</p>
-              <div className="testimonial-card-wave" aria-hidden="true" />
+              <p className="patient-review">
+                {review.review}
+              </p>
+
+              <div
+                className="testimonial-card-wave"
+                aria-hidden="true"
+              />
             </article>
           ))}
         </div>
@@ -130,21 +277,48 @@ function PatientTestimonials() {
           className="testimonial-arrow testimonial-arrow-right"
           type="button"
           aria-label="Next reviews"
+          disabled={activeReview >= maxIndex}
           onClick={() => scrollSlider(1)}
         >
           ›
         </button>
       </div>
 
-      <div className="testimonial-dots" aria-hidden="true">
-        <span className="active" />
-        <span />
-        <span />
+      {/* Functional Dots */}
+      <div className="testimonial-dots">
+        {Array.from(
+          { length: maxIndex + 1 },
+          (_, index) => (
+            <button
+              key={index}
+              type="button"
+              className={
+                activeReview === index
+                  ? "active"
+                  : ""
+              }
+              aria-label={`Go to review ${index + 1}`}
+              aria-current={
+                activeReview === index
+                  ? "true"
+                  : undefined
+              }
+              onClick={() => scrollToReview(index)}
+            />
+          )
+        )}
       </div>
 
+      {/* Statistics */}
       <div className="testimonial-stats">
         <div className="testimonial-stat">
-          <div className="stat-icon" aria-hidden="true">♧</div>
+          <div
+            className="stat-icon"
+            aria-hidden="true"
+          >
+            ♧
+          </div>
+
           <div>
             <strong>2,500+</strong>
             <span>Happy Patients</span>
@@ -152,7 +326,13 @@ function PatientTestimonials() {
         </div>
 
         <div className="testimonial-stat">
-          <div className="stat-icon" aria-hidden="true">✧</div>
+          <div
+            className="stat-icon"
+            aria-hidden="true"
+          >
+            ✧
+          </div>
+
           <div>
             <strong>4.9/5</strong>
             <span>Patient Rating</span>
@@ -160,7 +340,13 @@ function PatientTestimonials() {
         </div>
 
         <div className="testimonial-stat">
-          <div className="stat-icon" aria-hidden="true">✓</div>
+          <div
+            className="stat-icon"
+            aria-hidden="true"
+          >
+            ✓
+          </div>
+
           <div>
             <strong>8+</strong>
             <span>Years of Trusted Care</span>

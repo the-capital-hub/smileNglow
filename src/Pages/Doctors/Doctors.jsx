@@ -27,6 +27,11 @@ const doctors = [
     image: kiran,
     branches: ["HSR", "Jayanagar", "Silk Institute"],
     category: "resident",
+    branchOrder: {
+      HSR: 1,
+      Jayanagar: 1,
+      "Silk Institute": 1,
+    },
   },
   {
     id: "sarfaraz",
@@ -38,6 +43,7 @@ const doctors = [
     image: sarfaraz,
     branches: ["HSR"],
     category: "resident",
+    branchOrder: { HSR: 2 },
   },
   {
     id: "vaishak",
@@ -49,6 +55,7 @@ const doctors = [
     image: andesh,
     branches: ["Jayanagar"],
     category: "resident",
+    branchOrder: { Jayanagar: 2 },
   },
   {
     id: "raijo",
@@ -60,7 +67,9 @@ const doctors = [
     image: rajio,
     branches: ["Silk Institute"],
     category: "resident",
+    branchOrder: { "Silk Institute": 2 },
   },
+
   {
     id: "sushant",
     name: "Dr. Sushant",
@@ -71,6 +80,11 @@ const doctors = [
     image: sushant,
     branches: ["HSR", "Jayanagar", "Silk Institute"],
     category: "consultant",
+    branchOrder: {
+      HSR: 1,
+      Jayanagar: 1,
+      "Silk Institute": 6,
+    },
   },
   {
     id: "sanket",
@@ -82,6 +96,11 @@ const doctors = [
     image: sanketh,
     branches: ["HSR", "Jayanagar", "Silk Institute"],
     category: "consultant",
+    branchOrder: {
+      HSR: 2,
+      Jayanagar: 3,
+      "Silk Institute": 2,
+    },
   },
   {
     id: "martin",
@@ -93,6 +112,11 @@ const doctors = [
     image: martin,
     branches: ["HSR", "Jayanagar", "Silk Institute"],
     category: "consultant",
+    branchOrder: {
+      HSR: 3,
+      Jayanagar: 2,
+      "Silk Institute": 1,
+    },
   },
   {
     id: "sai-kalyan",
@@ -104,6 +128,7 @@ const doctors = [
     image: "",
     branches: ["HSR"],
     category: "consultant",
+    branchOrder: { HSR: 4 },
   },
   {
     id: "sahar",
@@ -115,6 +140,10 @@ const doctors = [
     image: sahar,
     branches: ["HSR", "Jayanagar"],
     category: "consultant",
+    branchOrder: {
+      HSR: 5,
+      Jayanagar: 5,
+    },
   },
   {
     id: "kalyan",
@@ -126,6 +155,10 @@ const doctors = [
     image: "",
     branches: ["Jayanagar", "Silk Institute"],
     category: "consultant",
+    branchOrder: {
+      Jayanagar: 4,
+      "Silk Institute": 3,
+    },
   },
   {
     id: "yajwin",
@@ -137,6 +170,7 @@ const doctors = [
     image: yajwin,
     branches: ["Jayanagar"],
     category: "consultant",
+    branchOrder: { Jayanagar: 6 },
   },
   {
     id: "sandesh",
@@ -148,6 +182,7 @@ const doctors = [
     image: "",
     branches: ["Silk Institute"],
     category: "consultant",
+    branchOrder: { "Silk Institute": 4 },
   },
   {
     id: "aditya",
@@ -159,6 +194,7 @@ const doctors = [
     image: adithya,
     branches: ["Silk Institute"],
     category: "consultant",
+    branchOrder: { "Silk Institute": 5 },
   },
 ];
 
@@ -198,7 +234,6 @@ const branches = ["HSR", "Jayanagar", "Silk Institute"];
 
 function Doctors() {
   const shouldReduceMotion = useReducedMotion();
-
   const [activeBranch, setActiveBranch] = useState("HSR");
 
   const revealAnimation = shouldReduceMotion
@@ -215,11 +250,15 @@ function Doctors() {
       }
     : cardReveal;
 
-  /* Filter doctors according to selected branch */
+  /* Branch Wise Doctor Filtering */
 
-  const branchDoctors = doctors.filter((doctor) =>
-    doctor.branches.includes(activeBranch)
-  );
+  const branchDoctors = doctors
+    .filter((doctor) => doctor.branches.includes(activeBranch))
+    .sort(
+      (a, b) =>
+        (a.branchOrder?.[activeBranch] ?? 999) -
+        (b.branchOrder?.[activeBranch] ?? 999)
+    );
 
   const residents = branchDoctors.filter(
     (doctor) => doctor.category === "resident"
@@ -229,7 +268,7 @@ function Doctors() {
     (doctor) => doctor.category === "consultant"
   );
 
-  /* Doctor Card */
+  /* Doctor Cards */
 
   const renderDoctorCards = (doctorList) =>
     doctorList.map((doctor) => (
@@ -286,6 +325,7 @@ function Doctors() {
         <h3 className="doctor-category-title">{title}</h3>
 
         <motion.div
+          key={`${activeBranch}-${title}`}
           className="doctors-grid"
           variants={{
             hidden: {},
@@ -295,9 +335,8 @@ function Doctors() {
               },
             },
           }}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.08 }}
+          initial={shouldReduceMotion ? false : "hidden"}
+          animate="visible"
         >
           {renderDoctorCards(doctorList)}
         </motion.div>
@@ -307,7 +346,6 @@ function Doctors() {
 
   return (
     <main className="doctors-page">
-
       {/* Hero Section */}
 
       <motion.section
@@ -345,7 +383,6 @@ function Doctors() {
       {/* Team Section */}
 
       <section className="doctors-team-section">
-
         {/* Benefits */}
 
         <motion.div
@@ -369,7 +406,6 @@ function Doctors() {
             <span className="benefit-icon" aria-hidden="true">
               ♧
             </span>
-
             <div>
               <h3>Experienced Team</h3>
               <p>Specialists across key dental fields</p>
@@ -383,7 +419,6 @@ function Doctors() {
             <span className="benefit-icon" aria-hidden="true">
               ◇
             </span>
-
             <div>
               <h3>Patient First Care</h3>
               <p>Comfort, safety, and clear guidance</p>
@@ -397,7 +432,6 @@ function Doctors() {
             <span className="benefit-icon" aria-hidden="true">
               ♡
             </span>
-
             <div>
               <h3>Comprehensive Care</h3>
               <p>From prevention to advanced treatments</p>
@@ -411,7 +445,6 @@ function Doctors() {
             <span className="benefit-icon" aria-hidden="true">
               ♡
             </span>
-
             <div>
               <h3>Trusted by Patients</h3>
               <p>For quality care and lasting smiles</p>
@@ -444,15 +477,17 @@ function Doctors() {
 
         {/* Branch Selector */}
 
-        <div className="doctors-branch-selector">
+        <div className="doctors-branch-selector" role="tablist" aria-label="Select clinic branch">
           {branches.map((branch) => (
             <button
               key={branch}
               type="button"
+              role="tab"
               className={`doctors-branch-button ${
                 activeBranch === branch ? "active" : ""
               }`}
               onClick={() => setActiveBranch(branch)}
+              aria-selected={activeBranch === branch}
               aria-pressed={activeBranch === branch}
             >
               {branch}
@@ -469,9 +504,10 @@ function Doctors() {
 
         {/* Residents and Consultants */}
 
-        {renderDoctorSection("Resident Doctors", residents)}
-
-        {renderDoctorSection("Consultants", consultants)}
+        <div key={activeBranch} className="doctors-branch-results" aria-live="polite">
+          {renderDoctorSection("Resident Doctors", residents)}
+          {renderDoctorSection("Consultants", consultants)}
+        </div>
 
         {/* Appointment CTA */}
 
@@ -482,10 +518,7 @@ function Doctors() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
         >
-          <div
-            className="doctors-cta-decoration"
-            aria-hidden="true"
-          >
+          <div className="doctors-cta-decoration" aria-hidden="true">
             ♡
           </div>
 
@@ -526,7 +559,6 @@ function Doctors() {
             <span aria-hidden="true">→</span>
           </a>
         </motion.section>
-
       </section>
     </main>
   );
