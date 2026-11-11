@@ -7,12 +7,13 @@ import image1 from "../../../assets/testi/image1.png";
 import image2 from "../../../assets/testi/image2.png";
 import image3 from "../../../assets/testi/image3.png";
 import image4 from "../../../assets/testi/image4.png";
+import image5 from "../../../assets/testi/image5.png";
 
 const reviews = [
   {
     name: "Vivek Jain",
     location: "Bengaluru, Karnataka",
-    image: "",
+    image: image5,
     review:
       "A very comfortable and professional experience. The team is friendly and explained the treatment clearly. Highly recommended!",
   },

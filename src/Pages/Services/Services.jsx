@@ -42,7 +42,7 @@ const services = [
   },
   {
     title: "Orthodontic Treatment",
-    slug: "orthodontic-treatment",
+    slug: "orthodontics",
     description:
       "Teeth alignment solutions including braces and clear aligners.",
     image: orthodonticImage,

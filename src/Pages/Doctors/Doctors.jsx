@@ -52,7 +52,7 @@ const doctors = [
     qualification: "BDS",
     description:
       "Dedicated to clear guidance and comfortable dental visits.",
-    image: andesh,
+    image: "",
     branches: ["Jayanagar"],
     category: "resident",
     branchOrder: { Jayanagar: 2 },
@@ -138,7 +138,7 @@ const doctors = [
     description:
       "Focused on gum health and the care of supporting tissues.",
     image: sahar,
-    branches: ["HSR", "Jayanagar"],
+    branches: ["HSR","Jayanagar" ],
     category: "consultant",
     branchOrder: {
       HSR: 5,
@@ -179,7 +179,7 @@ const doctors = [
     qualification: "BDS, MDS • Orthodontist",
     description:
       "Helping patients work toward healthier bites and confident smiles.",
-    image: "",
+    image: andesh,
     branches: ["Silk Institute"],
     category: "consultant",
     branchOrder: { "Silk Institute": 4 },

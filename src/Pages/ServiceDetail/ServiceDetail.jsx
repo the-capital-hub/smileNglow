@@ -58,7 +58,7 @@ const services = {
       ["Follow Up", "Receive aftercare and follow-up guidance."],
     ],
   },
-  "orthodontic-treatment": {
+  "orthodontics": {
     title: "Orthodontic Treatment",
     subtitle: "Explore options for aligning your teeth and bite.",
     image: orthodonticImage,
@@ -142,7 +142,13 @@ const services = {
 
 export default function ServiceDetail() {
   const { slug } = useParams();
-  const service = services[slug];
+
+console.log("Current URL Slug:", slug);
+console.log("Available Services:", Object.keys(services));
+
+const service = services[slug];
+
+console.log("Matched Service:", service);
 
   if (!service) {
     return (
