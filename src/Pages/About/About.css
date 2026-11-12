@@ -436,10 +436,17 @@ font-weight: 600;
   }
 
   .about-story-image {
-    max-width: 460px;
+        width: 100%;
+    max-width: 100%;
+    height: auto;
+    
     margin-inline: auto;
-  }
 
+  }
+.about-gallery img {
+  object-fit: contain
+
+}
   .about-story h2,
   .about-section-heading h2 {
     font-size: 32px;
