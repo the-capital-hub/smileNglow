@@ -145,21 +145,7 @@ const doctors = [
       Jayanagar: 5,
     },
   },
-  {
-    id: "kalyan",
-    name: "Dr. Kalyan",
-    role: "Consultant",
-    qualification: "",
-    description:
-      "Dedicated to providing attentive and patient focused dental care.",
-    image: "",
-    branches: ["Jayanagar", "Silk Institute"],
-    category: "consultant",
-    branchOrder: {
-      Jayanagar: 4,
-      "Silk Institute": 3,
-    },
-  },
+  
   {
     id: "yajwin",
     name: "Dr. Yajwin",
