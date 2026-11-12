@@ -69,7 +69,7 @@ const PrivacyPolicy = () => {
             <span>Privacy Policy</span>
           </nav>
 
-          <p className="privacy-eyebrow">Smile and Glow Vasan</p>
+          <p className="privacy-eyebrow">Smile & Glow Vasan</p>
           <h1>
             Privacy <span>Policy</span>
           </h1>
@@ -93,7 +93,7 @@ const PrivacyPolicy = () => {
                 <p className="privacy-label">Your information matters</p>
                 <h2>Privacy Policy</h2>
                 <p>
-                  This policy describes how Smile and Glow Vasan may
+                  This policy describes how Smile & Glow Vasan may
                   collect, use, and protect information when you visit our
                   website or contact us.
                 </p>

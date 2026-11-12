@@ -28,7 +28,7 @@ const galleryItems = [
     id: 1,
     category: "Clinic Interior",
     image: image7,
-    alt: "Smile and Glow Vasan reception",
+    alt: "Smile & Glow Vasan reception",
   },
   {
     id: 2,

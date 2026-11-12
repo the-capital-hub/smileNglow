@@ -96,7 +96,7 @@ export default function About() {
         <div className="about-story-image about-reveal">
           <img
             src={aboutImage}
-            alt="Smile and Glow Vasan dental care team"
+            alt="Smile & Glow Vasan dental care team"
             loading="lazy"
           />
           <span className="about-image-accent" aria-hidden="true" />
@@ -110,7 +110,7 @@ export default function About() {
           </h2>
 
           <p>
-            At Smile and Glow Vasan, we are passionate about
+            At Smile & Glow Vasan, we are passionate about
             delivering personalized dental care in a comfortable and
             welcoming environment. We combine professional expertise,
             modern technology and a patient first approach to help you
@@ -167,7 +167,7 @@ export default function About() {
         <div className="about-section-heading about-reveal">
           <span className="about-eyebrow">Why Choose Us</span>
           <h2>
-            The Smile and Glow Vasan <span>Difference</span>
+            The Smile & Glow Vasan <span>Difference</span>
           </h2>
           <span className="about-heading-line" aria-hidden="true" />
         </div>

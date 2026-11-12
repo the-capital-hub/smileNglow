@@ -367,7 +367,7 @@ function Contact() {
             variants={cardAnimation}
           >
             <iframe
-              title="Smile and Glow Dental Vasan Clinic location"
+              title="Smile & Glow Dental Vasan Clinic location"
               src="https://maps.app.goo.gl/thNcH4y9BQAzY5s99"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

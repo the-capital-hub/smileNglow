@@ -20,7 +20,7 @@ const doctors = [
   {
     id: "kiran",
     name: "Dr. Kiran Sunny",
-    role: "Resident Doctor",
+    role: "Chief doctor, Founder",
     qualification: "BDS, MDS • Prosthodontist",
     description:
       "Focused on thoughtful treatment planning and long term oral health.",
@@ -90,7 +90,7 @@ const doctors = [
     id: "sanket",
     name: "Dr. Sanket",
     role: "Consultant",
-    qualification: "BDS, MDS • Orthodontist",
+    qualification: "BDS, MDS • Pedodontist",
     description:
       "Helping patients work toward healthier bites and confident smiles.",
     image: sanketh,
@@ -126,7 +126,7 @@ const doctors = [
     description:
       "Dedicated to providing attentive and patient focused dental care.",
     image: "",
-    branches: ["HSR"],
+    branches: ["Jayanagar", "Silk Institute"],
     category: "consultant",
     branchOrder: { HSR: 4 },
   },
@@ -289,7 +289,7 @@ function Doctors() {
               <span className="placeholder-mark" aria-hidden="true">
                 ♡
               </span>
-              <span>Smile and Glow Vasan</span>
+              <span>Smile & Glow Vasan</span>
             </div>
           )}
         </div>

@@ -11,7 +11,7 @@ import image1 from '../../../assets/home/image1.png'
 const branches = [
   {
     name: "HSR Layout",
-    subtitle: "Smile and Glow Vasan",
+    subtitle: "Smile & Glow Vasan",
     image: image1,
     address:
       "1192, 22nd Cross Road, 24th Main Rd, Sector 2, HSR Layout, Bengaluru, Karnataka 560102",
@@ -23,7 +23,7 @@ const branches = [
   },
   {
     name: "Silk Institute",
-    subtitle: "Smile and Glow Vasan",
+    subtitle: "Smile & Glow Vasan",
     image: image1,
     address:
       "Metro Pillar 311, 2nd floor, Shiva Complex, Kanakapura Main Rd, near Elegant Whispering Winds Apartment, Nagegowdanapalya, Bengaluru",
@@ -35,7 +35,7 @@ const branches = [
   },
   {
     name: "Jayanagar",
-    subtitle: "Smile and Glow Vasan",
+    subtitle: "Smile & Glow Vasan",
     image: image1,
     address:
       "138/37, 6th C Main Road, 4th Block, Jayanagar, Bengaluru, Karnataka 560011",

@@ -10,7 +10,7 @@ function WhatsAppFloatingButton() {
   const phoneNumber = "917483456238";
 
   const [message, setMessage] = useState(
-    "Hello Smile N Glow Vasan Team,\n\nI would like to reach out to your clinic. Please call me back at your convenience.\n\nThank you."
+    "Hello Smile & Glow Vasan Team,\n\nI would like to reach out to your clinic. Please call me back at your convenience.\n\nThank you."
   );
 
   const handleWhatsApp = () => {
@@ -34,7 +34,7 @@ function WhatsAppFloatingButton() {
               </div>
 
               <div>
-                <h3>Smile N Glow Vasan</h3>
+                <h3>Smile & Glow Vasan</h3>
                 <p>How can we help you?</p>
               </div>
             </div>

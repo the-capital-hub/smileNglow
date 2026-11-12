@@ -180,7 +180,7 @@ console.log("Matched Service:", service);
             <span aria-current="page">{service.title}</span>
           </nav>
 
-          <span className="service-detail-eyebrow">Smile N Glow Vasan</span>
+          <span className="service-detail-eyebrow">Smile & Glow Vasan</span>
           <h1>{service.title}</h1>
           <p>{service.subtitle}</p>
 
@@ -258,7 +258,7 @@ console.log("Matched Service:", service);
         </div>
 
         <div className="service-detail-cta-copy">
-          <span>Smile N Glow Vasan</span>
+          <span>Smile & Glow Vasan</span>
           <h2>Ready to Plan Your Visit?</h2>
           <p>Contact our team to discuss your dental care options.</p>
         </div>

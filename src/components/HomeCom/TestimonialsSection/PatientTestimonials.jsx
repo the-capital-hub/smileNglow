@@ -2,7 +2,6 @@
 import { useRef, useState, useEffect } from "react";
 import "./PatientTestimonials.css";
 
-import image from "../../../assets/image2.png";
 import image1 from "../../../assets/testi/image1.png";
 import image2 from "../../../assets/testi/image2.png";
 import image3 from "../../../assets/testi/image3.png";
@@ -52,8 +51,8 @@ function PatientTestimonials() {
 
   const [activeReview, setActiveReview] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3);
+  const [selectedReview, setSelectedReview] = useState(null);
 
-  // Responsive number of visible cards
   useEffect(() => {
     const updateVisibleCards = () => {
       if (window.innerWidth <= 700) {
@@ -66,7 +65,6 @@ function PatientTestimonials() {
     };
 
     updateVisibleCards();
-
     window.addEventListener("resize", updateVisibleCards);
 
     return () => {
@@ -74,33 +72,19 @@ function PatientTestimonials() {
     };
   }, []);
 
-  const maxIndex = Math.max(
-    0,
-    reviews.length - visibleCards
-  );
+  const maxIndex = Math.max(0, reviews.length - visibleCards);
 
-  // Scroll to a particular card
   const scrollToReview = (index) => {
     const slider = sliderRef.current;
-
     if (!slider) return;
 
-    const cards = slider.querySelectorAll(
-      ".testimonial-card"
-    );
-
+    const cards = slider.querySelectorAll(".testimonial-card");
     if (!cards.length) return;
 
-    const safeIndex = Math.max(
-      0,
-      Math.min(index, maxIndex)
-    );
-
-    const firstCard = cards[0];
-    const targetCard = cards[safeIndex];
+    const safeIndex = Math.max(0, Math.min(index, maxIndex));
 
     const targetPosition =
-      targetCard.offsetLeft - firstCard.offsetLeft;
+      cards[safeIndex].offsetLeft - cards[0].offsetLeft;
 
     slider.scrollTo({
       left: targetPosition,
@@ -110,15 +94,12 @@ function PatientTestimonials() {
     setActiveReview(safeIndex);
   };
 
-  // Left and right arrows
   const scrollSlider = (direction) => {
     scrollToReview(activeReview + direction);
   };
 
-  // Sync dots when user swipes manually
   const handleSliderScroll = () => {
     const slider = sliderRef.current;
-
     if (!slider) return;
 
     const cards = Array.from(
@@ -135,12 +116,8 @@ function PatientTestimonials() {
     cards.forEach((card, index) => {
       if (index > maxIndex) return;
 
-      const cardPosition =
-        card.offsetLeft - firstOffset;
-
-      const distance = Math.abs(
-        slider.scrollLeft - cardPosition
-      );
+      const cardPosition = card.offsetLeft - firstOffset;
+      const distance = Math.abs(slider.scrollLeft - cardPosition);
 
       if (distance < closestDistance) {
         closestDistance = distance;
@@ -151,23 +128,17 @@ function PatientTestimonials() {
     setActiveReview(closestIndex);
   };
 
-  // Keep slider aligned on resize
   useEffect(() => {
     const slider = sliderRef.current;
-
     if (!slider) return;
 
-    const cards = slider.querySelectorAll(
-      ".testimonial-card"
-    );
-
+    const cards = slider.querySelectorAll(".testimonial-card");
     if (!cards.length) return;
 
     const safeIndex = Math.min(activeReview, maxIndex);
 
     const targetPosition =
-      cards[safeIndex].offsetLeft -
-      cards[0].offsetLeft;
+      cards[safeIndex].offsetLeft - cards[0].offsetLeft;
 
     slider.scrollTo({
       left: targetPosition,
@@ -179,16 +150,31 @@ function PatientTestimonials() {
     }
   }, [visibleCards, maxIndex]);
 
+  // Close popup with Escape and prevent background scrolling
+  useEffect(() => {
+    if (!selectedReview) return;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setSelectedReview(null);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedReview]);
+
   return (
     <section className="testimonials-section">
-      <div
-        className="testimonial-tooth"
-        aria-hidden="true"
-      >
+      <div className="testimonial-tooth" aria-hidden="true">
         ♡
       </div>
 
-      {/* Heading */}
       <div className="testimonials-heading">
         <span className="testimonials-label">
           <span className="label-icon">☏</span>
@@ -205,7 +191,6 @@ function PatientTestimonials() {
         </p>
       </div>
 
-      {/* Carousel */}
       <div className="testimonials-carousel">
         <button
           className="testimonial-arrow testimonial-arrow-left"
@@ -223,10 +208,7 @@ function PatientTestimonials() {
           onScroll={handleSliderScroll}
         >
           {reviews.map((review) => (
-            <article
-              className="testimonial-card"
-              key={review.name}
-            >
+            <article className="testimonial-card" key={review.name}>
               <div className="testimonial-card-top">
                 <img
                   className="patient-photo"
@@ -239,8 +221,7 @@ function PatientTestimonials() {
                   <h3>{review.name}</h3>
 
                   <p className="patient-location">
-                    <span aria-hidden="true">●</span>
-                    {" "}
+                    <span aria-hidden="true">●</span>{" "}
                     {review.location}
                   </p>
 
@@ -252,10 +233,7 @@ function PatientTestimonials() {
                   </div>
                 </div>
 
-                <span
-                  className="quote-mark"
-                  aria-hidden="true"
-                >
+                <span className="quote-mark" aria-hidden="true">
                   ”
                 </span>
               </div>
@@ -265,6 +243,16 @@ function PatientTestimonials() {
               <p className="patient-review">
                 {review.review}
               </p>
+
+              {review.review.length > 150 && (
+                <button
+                  type="button"
+                  className="testimonial-read-more"
+                  onClick={() => setSelectedReview(review)}
+                >
+                  Read More <span aria-hidden="true">↗</span>
+                </button>
+              )}
 
               <div
                 className="testimonial-card-wave"
@@ -285,41 +273,26 @@ function PatientTestimonials() {
         </button>
       </div>
 
-      {/* Functional Dots */}
       <div className="testimonial-dots">
-        {Array.from(
-          { length: maxIndex + 1 },
-          (_, index) => (
-            <button
-              key={index}
-              type="button"
-              className={
-                activeReview === index
-                  ? "active"
-                  : ""
-              }
-              aria-label={`Go to review ${index + 1}`}
-              aria-current={
-                activeReview === index
-                  ? "true"
-                  : undefined
-              }
-              onClick={() => scrollToReview(index)}
-            />
-          )
-        )}
+        {Array.from({ length: maxIndex + 1 }, (_, index) => (
+          <button
+            key={index}
+            type="button"
+            className={activeReview === index ? "active" : ""}
+            aria-label={`Go to review ${index + 1}`}
+            aria-current={
+              activeReview === index ? "true" : undefined
+            }
+            onClick={() => scrollToReview(index)}
+          />
+        ))}
       </div>
 
-      {/* Statistics */}
       <div className="testimonial-stats">
         <div className="testimonial-stat">
-          <div
-            className="stat-icon"
-            aria-hidden="true"
-          >
+          <div className="stat-icon" aria-hidden="true">
             ♧
           </div>
-
           <div>
             <strong>2,500+</strong>
             <span>Happy Patients</span>
@@ -327,13 +300,9 @@ function PatientTestimonials() {
         </div>
 
         <div className="testimonial-stat">
-          <div
-            className="stat-icon"
-            aria-hidden="true"
-          >
+          <div className="stat-icon" aria-hidden="true">
             ✧
           </div>
-
           <div>
             <strong>4.9/5</strong>
             <span>Patient Rating</span>
@@ -341,19 +310,72 @@ function PatientTestimonials() {
         </div>
 
         <div className="testimonial-stat">
-          <div
-            className="stat-icon"
-            aria-hidden="true"
-          >
+          <div className="stat-icon" aria-hidden="true">
             ✓
           </div>
-
           <div>
             <strong>8+</strong>
             <span>Years of Trusted Care</span>
           </div>
         </div>
       </div>
+
+      {/* Full Review Popup */}
+      {selectedReview && (
+        <div
+          className="testimonial-modal-overlay"
+          onClick={() => setSelectedReview(null)}
+        >
+          <div
+            className="testimonial-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="testimonial-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="testimonial-modal-close"
+              aria-label="Close review"
+              onClick={() => setSelectedReview(null)}
+            >
+              ×
+            </button>
+
+            <div className="testimonial-modal-heading">
+              <img
+                src={selectedReview.image}
+                alt={selectedReview.name}
+                className="testimonial-modal-photo"
+              />
+
+              <div>
+                <h3 id="testimonial-modal-title">
+                  {selectedReview.name}
+                </h3>
+                <p>{selectedReview.location}</p>
+                <div className="patient-stars">★★★★★</div>
+              </div>
+            </div>
+
+            <div className="testimonial-divider" />
+
+            <div className="testimonial-modal-review">
+              {selectedReview.review}
+            </div>
+
+            <div className="testimonial-modal-footer">
+              <span>Patient Experience</span>
+              <button
+                type="button"
+                onClick={() => setSelectedReview(null)}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

@@ -55,7 +55,7 @@ const getBotResponse = (question) => {
     text.includes("dental")
   ) {
     return {
-      text: "Smile N Glow offers dental care and treatment services. Please contact our clinic to know more about the treatments available and which option may suit your needs.",
+      text: "Smile & Glow Vasan offers dental care and treatment services. Please contact our clinic to know more about the treatments available and which option may suit your needs.",
       whatsapp: false,
     };
   }
@@ -67,7 +67,7 @@ const getBotResponse = (question) => {
     text.includes("clinic")
   ) {
     return {
-      text: "Thank you for your interest in Smile N Glow Vasan. Please contact our team on WhatsApp for the exact clinic address and directions.",
+      text: "Thank you for your interest in Smile & Glow Vasan. Please contact our team on WhatsApp for the exact clinic address and directions.",
       whatsapp: true,
     };
   }
@@ -124,13 +124,13 @@ const getBotResponse = (question) => {
     text.includes("hey")
   ) {
     return {
-      text: "Hello! Welcome to Smile N Glow Vasan. How can I help you with your dental care today?",
+      text: "Hello! Welcome to Smile & Glow Vasan. How can I help you with your dental care today?",
       whatsapp: false,
     };
   }
 
   return {
-    text: "Thank you for reaching out to Smile N Glow Vasan. I can help with appointment enquiries, dental services, clinic information and contact details. You can also connect directly with our team through WhatsApp.",
+    text: "Thank you for reaching out to Smile & Glow Vasan. I can help with appointment enquiries, dental services, clinic information and contact details. You can also connect directly with our team through WhatsApp.",
     whatsapp: true,
   };
 };
@@ -190,7 +190,7 @@ function AIFloatingButton() {
 
   const openWhatsApp = () => {
     const whatsappMessage = encodeURIComponent(
-      "Hello Smile N Glow Vasan Team, I would like to enquire about a dental appointment. Please contact me at your convenience. Thank you."
+      "Hello Smile & Glow Vasan Team, I would like to enquire about a dental appointment. Please contact me at your convenience. Thank you."
     );
 
     window.open(
@@ -212,7 +212,7 @@ function AIFloatingButton() {
       {isOpen && (
         <section
           className="ai-chat-window"
-          aria-label="Smile N Glow dental assistant"
+          aria-label="Smile & Glow Vasan dental assistant"
         >
 
           {/* Header */}
@@ -224,7 +224,7 @@ function AIFloatingButton() {
               </span>
 
               <div className="ai-header-text">
-                <h3>Smile N Glow Assistant</h3>
+                <h3>Smile & Glow Vasan Assistant</h3>
 
                 <p>
                   <span className="ai-online-dot"></span>
@@ -260,7 +260,7 @@ function AIFloatingButton() {
           <div className="ai-chat-body">
 
             <div className="ai-chat-date">
-              Welcome to Smile N Glow
+              Welcome to Smile & Glow Vasan
             </div>
 
             {/* Welcome Message */}
@@ -272,7 +272,7 @@ function AIFloatingButton() {
 
               <div className="ai-message-content">
                 <p>
-                  Hello! Welcome to Smile N Glow Vasan. 👋
+                  Hello! Welcome to Smile & Glow Vasan. 👋
                 </p>
 
                 <p>
