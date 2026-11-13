@@ -13,7 +13,7 @@ import sanketh from "../../assets/docotor/sanketh.png";
 import sarfaraz from "../../assets/docotor/sarfaraz.png";
 import sushant from "../../assets/docotor/sushant.png";
 import yajwin from "../../assets/docotor/yajwin.png";
-
+import sai from "../../assets/docotor/sai.png";
 /* Doctor Data */
 
 const doctors = [
@@ -125,7 +125,7 @@ const doctors = [
     qualification: "",
     description:
       "Dedicated to providing attentive and patient focused dental care.",
-    image: "",
+    image: sai,
     branches: ["Jayanagar", "Silk Institute"],
     category: "consultant",
     branchOrder: { HSR: 4 },
