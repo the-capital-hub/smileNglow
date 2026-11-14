@@ -14,6 +14,7 @@ import sarfaraz from "../../assets/docotor/sarfaraz.png";
 import sushant from "../../assets/docotor/sushant.png";
 import yajwin from "../../assets/docotor/yajwin.png";
 import sai from "../../assets/docotor/sai.png";
+import vaishak from "../../assets/docotor/vaishak.png";
 /* Doctor Data */
 
 const doctors = [
@@ -52,11 +53,12 @@ const doctors = [
     qualification: "BDS",
     description:
       "Dedicated to clear guidance and comfortable dental visits.",
-    image: "",
+    image: vaishak,
     branches: ["Jayanagar"],
     category: "resident",
     branchOrder: { Jayanagar: 2 },
   },
+  
   {
     id: "raijo",
     name: "Dr. Raijo Thomas",
@@ -181,6 +183,18 @@ const doctors = [
     branches: ["Silk Institute"],
     category: "consultant",
     branchOrder: { "Silk Institute": 5 },
+  },
+  {
+    id: "Pramod",
+    name: "Pramod",
+    role: "manager",
+    qualification: "",
+    description:
+      "",
+    image: "",
+    branches: ["Jayanagar"],
+    category: "consultant",
+    branchOrder: { Jayanagar: 2 },
   },
 ];
 
