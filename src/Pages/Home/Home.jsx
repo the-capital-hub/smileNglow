@@ -8,6 +8,8 @@ import AboutUs from "../../components/HomeCom/AboutSection/AboutUs";
 import PatientTestimonials from "../../components/HomeCom/TestimonialsSection/PatientTestimonials";
 import BranchesSection from "../../components/HomeCom/BranchesSection/BranchesSection";
 import AppointmentCTA from "../../components/HomeCom/AppointmentCTA/AppointmentCTA";
+import WhyChooseUs from "../../components/HomeCom/WhyChooseUs/WhyChooseUs";
+import FAQSection from "../../components/HomeCom/FAQSection/FAQSection";
 
 const reveal = {
   hidden: { opacity: 0, y: 36 },
@@ -38,7 +40,7 @@ const Home = () => {
       <Hero />
 
       <AnimatedSection>
-        <TrustSection />
+        <WhyChooseUs/>
       </AnimatedSection>
 
       <AnimatedSection>
@@ -55,6 +57,9 @@ const Home = () => {
 
       <AnimatedSection>
         <BranchesSection />
+      </AnimatedSection>
+      <AnimatedSection>
+        <FAQSection />
       </AnimatedSection>
 
       <AnimatedSection>

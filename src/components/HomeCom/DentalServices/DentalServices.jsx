@@ -1,3 +1,4 @@
+
 import {
   ArrowRight,
   Heart,
@@ -63,88 +64,109 @@ const services = [
 
 export default function DentalServices() {
   return (
-    <section className="dental-services" aria-labelledby="services-title">
+    <section
+      className="dental-services"
+      aria-labelledby="services-title"
+    >
       <div className="dental-services-inner">
+
+        {/* SECTION HEADING */}
         <header className="dental-services-heading">
+
           <span className="dental-services-eyebrow">
+            <span className="services-eyebrow-line" />
             <Smile size={19} aria-hidden="true" />
-            Our Services
+            OUR DENTAL TREATMENTS
+            <span className="services-eyebrow-line" />
           </span>
 
           <h2 id="services-title">
-            Our Dental <span>Services</span>
+            Our Dental <span>Treatments</span>
           </h2>
 
           <p>
-            Comprehensive dental care for a healthier and brighter smile
+            Comprehensive dental care for a healthier and brighter smile.
           </p>
 
-          <span
-            className="dental-services-underline"
-            aria-hidden="true"
-          />
         </header>
 
+        {/* TREATMENT CARDS */}
         <div className="dental-services-grid">
-          {services.map(({ title, description, image, icon: Icon, alt }) => (
-            <article className="dental-service-card" key={title}>
-              <div className="dental-service-image-wrap">
-                <img
-                  src={image}
-                  alt={alt}
-                  className="dental-service-image"
-                  loading="lazy"
-                />
-              </div>
 
-              <div className="dental-service-content">
-                <span className="dental-service-icon">
-                  <Icon
-                    size={27}
-                    strokeWidth={1.8}
-                    aria-hidden="true"
+          {services.map(
+            ({ title, description, image, icon: Icon, alt }, index) => (
+              <article
+                className="dental-service-card"
+                key={title}
+                style={{ "--service-index": index }}
+              >
+
+                {/* IMAGE */}
+                <div className="dental-service-image-wrap">
+                  <img
+                    src={image}
+                    alt={alt}
+                    className="dental-service-image"
+                    loading="lazy"
                   />
-                </span>
+                </div>
 
-                <h3>{title}</h3>
-                <p>{description}</p>
+                {/* CONTENT */}
+                <div className="dental-service-content">
 
-                <a
-                  className="dental-service-link"
-                  href="/services"
-                  aria-label={`Learn more about ${title}`}
-                >
-                  Learn More
-                  <ArrowRight size={18} aria-hidden="true" />
-                </a>
-              </div>
-            </article>
-          ))}
+                  <span className="dental-service-icon">
+                    <Icon
+                      size={23}
+                      strokeWidth={1.8}
+                      aria-hidden="true"
+                    />
+                  </span>
+
+                  <h3>{title}</h3>
+
+                  <p>{description}</p>
+
+                  <a
+                    className="dental-service-link"
+                    href="/services"
+                    aria-label={`Learn more about ${title}`}
+                  >
+                    Learn More
+                    <ArrowRight size={17} aria-hidden="true" />
+                  </a>
+
+                </div>
+
+              </article>
+            )
+          )}
+
         </div>
 
-        <div className="dental-services-cta">
-          <div className="dental-services-cta-icon">
-            <Heart size={36} strokeWidth={1.5} aria-hidden="true" />
-          </div>
-
-          <div className="dental-services-cta-copy">
-            <h3>
-              Healthy Smile <span>Healthier You</span>
-            </h3>
-            <p>
-              Book your appointment today and take the first step towards a
-              confident smile.
-            </p>
-          </div>
+        {/* BOTTOM CTA */}
+        <div className="dental-services-footer">
 
           <a
-            className="dental-services-cta-button"
+            className="dental-services-view-all"
+            href="/services"
+          >
+            <span>View All Treatments</span>
+
+            <span className="dental-services-view-icon">
+              <ArrowRight size={21} aria-hidden="true" />
+            </span>
+          </a>
+
+          <a
+            className="dental-services-book-link"
             href="/book-appointment"
           >
+            <Heart size={17} />
             Book Appointment
-            <ArrowRight size={19} aria-hidden="true" />
           </a>
+
         </div>
+
       </div>
     </section>
   );

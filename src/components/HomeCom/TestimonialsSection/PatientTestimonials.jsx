@@ -1,5 +1,15 @@
 
 import { useRef, useState, useEffect } from "react";
+import {
+  MapPin,
+  Star,
+  UsersRound,
+  ShieldCheck,
+  Award,
+  ArrowRight,
+  Quote,
+} from "lucide-react";
+
 import "./PatientTestimonials.css";
 
 import image1 from "../../../assets/testi/image1.png";
@@ -46,6 +56,26 @@ const reviews = [
   },
 ];
 
+function ToothIcon({ className = "" }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 64 72"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M13 9C20 3 27 9 32 11C37 9 44 3 51 9C60 17 55 31 51 40C47 50 46 65 39 65C32 65 35 43 29 43C23 43 26 65 19 65C12 65 11 50 7 40C3 31 4 17 13 9Z"
+        stroke="currentColor"
+        strokeWidth="2.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function PatientTestimonials() {
   const sliderRef = useRef(null);
 
@@ -67,9 +97,7 @@ function PatientTestimonials() {
     updateVisibleCards();
     window.addEventListener("resize", updateVisibleCards);
 
-    return () => {
-      window.removeEventListener("resize", updateVisibleCards);
-    };
+    return () => window.removeEventListener("resize", updateVisibleCards);
   }, []);
 
   const maxIndex = Math.max(0, reviews.length - visibleCards);
@@ -82,7 +110,6 @@ function PatientTestimonials() {
     if (!cards.length) return;
 
     const safeIndex = Math.max(0, Math.min(index, maxIndex));
-
     const targetPosition =
       cards[safeIndex].offsetLeft - cards[0].offsetLeft;
 
@@ -109,7 +136,6 @@ function PatientTestimonials() {
     if (!cards.length) return;
 
     const firstOffset = cards[0].offsetLeft;
-
     let closestIndex = 0;
     let closestDistance = Infinity;
 
@@ -136,7 +162,6 @@ function PatientTestimonials() {
     if (!cards.length) return;
 
     const safeIndex = Math.min(activeReview, maxIndex);
-
     const targetPosition =
       cards[safeIndex].offsetLeft - cards[0].offsetLeft;
 
@@ -150,7 +175,6 @@ function PatientTestimonials() {
     }
   }, [visibleCards, maxIndex]);
 
-  // Close popup with Escape and prevent background scrolling
   useEffect(() => {
     if (!selectedReview) return;
 
@@ -171,156 +195,159 @@ function PatientTestimonials() {
 
   return (
     <section className="testimonials-section">
-      <div className="testimonial-tooth" aria-hidden="true">
-        ♡
-      </div>
+      <ToothIcon className="testimonial-background-tooth" />
 
-      <div className="testimonials-heading">
-        <span className="testimonials-label">
-          <span className="label-icon">☏</span>
-          Patient Testimonials
-        </span>
+      <div className="testimonials-container">
+        <header className="testimonials-heading">
+          <span className="testimonials-label">
+            <Quote size={19} aria-hidden="true" />
+            Patient Testimonials
+          </span>
 
-        <h2>
-          What Our <span>Patients Say</span>
-        </h2>
+          <h2>
+            What Our <span>Patients Say</span>
+          </h2>
 
-        <p>
-          Real experiences from our happy patients
-          who trusted us with their smile.
-        </p>
-      </div>
+          <p>
+            Real experiences from our happy patients who trusted
+            Smile & Glow Vasan for their dental care.
+          </p>
+        </header>
 
-      <div className="testimonials-carousel">
-        <button
-          className="testimonial-arrow testimonial-arrow-left"
-          type="button"
-          aria-label="Previous reviews"
-          disabled={activeReview === 0}
-          onClick={() => scrollSlider(-1)}
-        >
-          ‹
-        </button>
+        <div className="testimonials-carousel">
+          <button
+            className="testimonial-arrow testimonial-arrow-left"
+            type="button"
+            aria-label="Previous reviews"
+            disabled={activeReview === 0}
+            onClick={() => scrollSlider(-1)}
+          >
+            <ArrowRight size={23} aria-hidden="true" />
+          </button>
 
-        <div
-          className="testimonial-grid"
-          ref={sliderRef}
-          onScroll={handleSliderScroll}
-        >
-          {reviews.map((review) => (
-            <article className="testimonial-card" key={review.name}>
-              <div className="testimonial-card-top">
-                <img
-                  className="patient-photo"
-                  src={review.image}
-                  alt={review.name}
-                  loading="lazy"
-                />
+          <div
+            className="testimonial-grid"
+            ref={sliderRef}
+            onScroll={handleSliderScroll}
+          >
+            {reviews.map((review) => (
+              <article className="testimonial-card" key={review.name}>
+                <div className="testimonial-card-top">
+                  <img
+                    className="patient-photo"
+                    src={review.image}
+                    alt={review.name}
+                    loading="lazy"
+                  />
 
-                <div className="patient-details">
-                  <h3>{review.name}</h3>
+                  <div className="patient-details">
+                    <h3>{review.name}</h3>
 
-                  <p className="patient-location">
-                    <span aria-hidden="true">●</span>{" "}
-                    {review.location}
-                  </p>
+                    <p className="patient-location">
+                      <MapPin size={14} aria-hidden="true" />
+                      {review.location}
+                    </p>
 
-                  <div
-                    className="patient-stars"
-                    aria-label="5 out of 5 stars"
-                  >
-                    ★★★★★
+                    <div
+                      className="patient-stars"
+                      aria-label="5 out of 5 stars"
+                    >
+                      {Array.from({ length: 5 }, (_, index) => (
+                        <Star
+                          key={index}
+                          size={19}
+                          fill="currentColor"
+                        />
+                      ))}
+                    </div>
                   </div>
+
+                  <Quote
+                    className="testimonial-quote-icon"
+                    size={42}
+                    aria-hidden="true"
+                  />
                 </div>
 
-                <span className="quote-mark" aria-hidden="true">
-                  ”
-                </span>
-              </div>
+                <div className="testimonial-divider" />
 
-              <div className="testimonial-divider" />
+                <p className="patient-review">{review.review}</p>
 
-              <p className="patient-review">
-                {review.review}
-              </p>
+                {review.review.length > 150 && (
+                  <button
+                    type="button"
+                    className="testimonial-read-more"
+                    onClick={() => setSelectedReview(review)}
+                  >
+                    Read More
+                    <ArrowRight size={19} aria-hidden="true" />
+                  </button>
+                )}
 
-              {review.review.length > 150 && (
-                <button
-                  type="button"
-                  className="testimonial-read-more"
-                  onClick={() => setSelectedReview(review)}
-                >
-                  Read More <span aria-hidden="true">↗</span>
-                </button>
-              )}
+                <div className="testimonial-card-wave" aria-hidden="true">
+                  <ToothIcon className="testimonial-card-tooth" />
+                </div>
+              </article>
+            ))}
+          </div>
 
-              <div
-                className="testimonial-card-wave"
-                aria-hidden="true"
-              />
-            </article>
+          <button
+            className="testimonial-arrow testimonial-arrow-right"
+            type="button"
+            aria-label="Next reviews"
+            disabled={activeReview >= maxIndex}
+            onClick={() => scrollSlider(1)}
+          >
+            <ArrowRight size={23} aria-hidden="true" />
+          </button>
+        </div>
+
+        <div className="testimonial-dots">
+          {Array.from({ length: maxIndex + 1 }, (_, index) => (
+            <button
+              key={index}
+              type="button"
+              className={activeReview === index ? "active" : ""}
+              aria-label={`Go to review ${index + 1}`}
+              aria-current={activeReview === index ? "true" : undefined}
+              onClick={() => scrollToReview(index)}
+            />
           ))}
         </div>
 
-        <button
-          className="testimonial-arrow testimonial-arrow-right"
-          type="button"
-          aria-label="Next reviews"
-          disabled={activeReview >= maxIndex}
-          onClick={() => scrollSlider(1)}
-        >
-          ›
-        </button>
-      </div>
+        <div className="testimonial-stats">
+          <div className="testimonial-stat">
+            <div className="stat-icon">
+              <UsersRound size={37} aria-hidden="true" />
+            </div>
+            <div className="stat-content">
+              <strong>2,500+</strong>
+              <span>Happy Patients</span>
+            </div>
+          </div>
 
-      <div className="testimonial-dots">
-        {Array.from({ length: maxIndex + 1 }, (_, index) => (
-          <button
-            key={index}
-            type="button"
-            className={activeReview === index ? "active" : ""}
-            aria-label={`Go to review ${index + 1}`}
-            aria-current={
-              activeReview === index ? "true" : undefined
-            }
-            onClick={() => scrollToReview(index)}
-          />
-        ))}
-      </div>
+          <div className="testimonial-stat">
+            <div className="stat-icon">
+              <Star size={37} aria-hidden="true" />
+            </div>
+            <div className="stat-content">
+              <strong>4.9/5</strong>
+              <span>Patient Rating</span>
+            </div>
+          </div>
 
-      <div className="testimonial-stats">
-        <div className="testimonial-stat">
-          <div className="stat-icon" aria-hidden="true">
-            ♧
-          </div>
-          <div>
-            <strong>2,500+</strong>
-            <span>Happy Patients</span>
-          </div>
-        </div>
-
-        <div className="testimonial-stat">
-          <div className="stat-icon" aria-hidden="true">
-            ✧
-          </div>
-          <div>
-            <strong>4.9/5</strong>
-            <span>Patient Rating</span>
-          </div>
-        </div>
-
-        <div className="testimonial-stat">
-          <div className="stat-icon" aria-hidden="true">
-            ✓
-          </div>
-          <div>
-            <strong>8+</strong>
-            <span>Years of Trusted Care</span>
+          <div className="testimonial-stat">
+            <div className="stat-icon">
+              <Award size={37} aria-hidden="true" />
+            </div>
+            <div className="stat-content">
+              <strong>8+</strong>
+              <span>Years of Trusted Care</span>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Full Review Popup */}
       {selectedReview && (
         <div
           className="testimonial-modal-overlay"

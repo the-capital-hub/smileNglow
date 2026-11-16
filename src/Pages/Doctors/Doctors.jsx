@@ -128,9 +128,9 @@ const doctors = [
     description:
       "Dedicated to providing attentive and patient focused dental care.",
     image: sai,
-    branches: ["Jayanagar", "Silk Institute"],
+    branches: ["Jayanagar", "Silk Institute", "HSR"],
     category: "consultant",
-    branchOrder: { HSR: 4 },
+    branchOrder: { HSR: 4 }
   },
   {
     id: "sahar",
@@ -185,17 +185,17 @@ const doctors = [
     branchOrder: { "Silk Institute": 5 },
   },
   {
-    id: "Pramod",
-    name: "Pramod",
-    role: "manager",
-    qualification: "",
-    description:
-      "",
-    image: "",
-    branches: ["Jayanagar"],
-    category: "consultant",
-    branchOrder: { Jayanagar: 2 },
-  },
+  id: "Pramod",
+  name: "Pramod",
+  role: "Clinic Manager",
+  qualification: "Clinic Operations & Patient Coordination",
+  description:
+    "Dedicated to ensuring smooth clinic operations, coordinating patient appointments, and creating a comfortable experience for every visitor.",
+  image: "",
+  branches: ["Jayanagar"],
+  category: "manager",
+  branchOrder: { Jayanagar: 2 },
+},
 ];
 
 /* Animations */
@@ -267,6 +267,9 @@ function Doctors() {
   const consultants = branchDoctors.filter(
     (doctor) => doctor.category === "consultant"
   );
+  const manager = branchDoctors.filter(
+  (doctor) => doctor.category === "manager"
+);
 
   /* Doctor Cards */
 
@@ -505,8 +508,11 @@ function Doctors() {
         {/* Residents and Consultants */}
 
         <div key={activeBranch} className="doctors-branch-results" aria-live="polite">
+
           {renderDoctorSection("Resident Doctors", residents)}
           {renderDoctorSection("Consultants", consultants)}
+                    {renderDoctorSection("Management", manager)}
+
         </div>
 
         {/* Appointment CTA */}
