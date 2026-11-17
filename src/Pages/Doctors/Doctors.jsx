@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import "./Doctors.css";
+import aboutImage from "../../assets/home/about.jpeg";
 
 import adithya from "../../assets/docotor/adithya.png";
 import andesh from "../../assets/docotor/andesh.png";
@@ -25,7 +26,7 @@ const doctors = [
     qualification: "BDS, MDS • Prosthodontist",
     description:
       "Focused on thoughtful treatment planning and long term oral health.",
-    image: kiran,
+    image: aboutImage,
     branches: ["HSR", "Jayanagar", "Silk Institute"],
     category: "resident",
     branchOrder: {

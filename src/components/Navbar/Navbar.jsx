@@ -26,7 +26,7 @@ const treatmentGroups = [
       "root-canal-treatment",
       "microscopic-root-canal-treatment",
       "root-canal-retreatment",
-      "root-canal-primary-teeth",
+      "root-canal-treatment-primary-teeth",
       "periapical-surgery",
     ],
     secondaryTitle: "Teeth Alignment",
@@ -37,10 +37,10 @@ const treatmentGroups = [
       "Invisalign Treatment",
     ],
     secondarySlugs: [
-      "metal-braces",
-      "ceramic-braces",
-      "damon-braces",
-      "invisalign",
+      "metal-braces-treatment",
+      "ceramic-braces-treatment",
+      "damon-braces-treatment",
+      "invisalign-treatment",
     ],
   },
   {
@@ -53,9 +53,9 @@ const treatmentGroups = [
     ],
     slugs: [
       "dental-implants",
-      "same-day-implants",
+      "immediate-loaded-implants",
       "full-mouth-fixed-ceramic-teeth",
-      "3d-guided-dental-implants",
+      "keyhole-3d-guided-implants",
     ],
     secondaryTitle: "Corrective Jaw Surgeries",
     secondaryItems: [
@@ -114,11 +114,11 @@ const treatmentGroups = [
       "pediatric-dentistry",
       "growth-modulation",
       "early-childhood-caries",
-      "tooth-colored-fillings",
+      "tooth-coloured-fillings",
       "vital-pulp-therapy",
-      "root-canal-primary-teeth",
+      "root-canal-treatment-primary-teeth",
       "strip-crowns",
-      "scaling-and-polishing",
+      "scaling-tooth-polishing",
       "preventive-dentistry",
       "dental-trauma-kids",
     ],
@@ -214,10 +214,14 @@ export default function Navbar() {
                 servicesOpen ? "is-open" : ""
               }`}
               onMouseEnter={() => {
-                if (window.innerWidth > 900) setServicesOpen(true);
+                if (window.innerWidth > 900) {
+                  setServicesOpen(true);
+                }
               }}
               onMouseLeave={() => {
-                if (window.innerWidth > 900) setServicesOpen(false);
+                if (window.innerWidth > 900) {
+                  setServicesOpen(false);
+                }
               }}
             >
               <button
@@ -241,7 +245,10 @@ export default function Navbar() {
 
                 <div className="treatment-mega-grid">
                   {treatmentGroups.map((group, index) => (
-                    <div className="treatment-column" key={group.title}>
+                    <div
+                      className="treatment-column"
+                      key={group.title}
+                    >
                       <button
                         type="button"
                         className={`treatment-category-toggle ${
@@ -299,7 +306,10 @@ export default function Navbar() {
           </div>
 
           <div className="navbar-actions">
-            <a className="navbar-phone" href="tel:+917483456238">
+            <a
+              className="navbar-phone"
+              href="tel:+917483456238"
+            >
               <Phone size={16} aria-hidden="true" />
               <span>+91 7483456238</span>
             </a>

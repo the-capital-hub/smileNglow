@@ -18,6 +18,41 @@ import orthodonticImage from "../../assets/services/orthodontic-treatment.jpg";
 import cosmeticImage from "../../assets/services/cosmetic-dentistry.jpg";
 import rootCanalImage from "../../assets/services/root-canal.jpg";
 import extractionImage from "../../assets/services/tooth-extraction.jpg";
+import CrownLengtheningandGumReshaping from "../../assets/services/CrownLengtheningandGumReshaping.png";
+import DentalTraumainKids from "../../assets/services/DentalTraumainKids.png";
+import DentalVeneers from "../../assets/services/DentalVeneers.png";
+import DigitalSmileDesign from "../../assets/services/DigitalSmileDesign.png";
+import EarlyChildhoodCaries from "../../assets/services/EarlyChildhoodCaries.png";
+import FullMouthFixedCeramicTeeth from "../../assets/services/FullMouthFixedCeramicTeeth.png";
+import GingivalDepigmentation from "../../assets/services/GingivalDepigmentation.png";
+import GrowthModulation from "../../assets/services/GrowthModulation.png";
+import InlayandOnlay from "../../assets/services/InlayandOnlay.png";
+import MandibularSurgery from "../../assets/services/MandibularSurgery.png";
+import MaxillarySurgery from "../../assets/services/MaxillarySurgery.png";
+import MicroscopicRootCanalTreatment from "../../assets/services/MicroscopicRootCanalTreatment.png";
+import PreventivyDentistry from "../../assets/services/PreventivyDentistry.png";
+import RetreatmentofFailedRootCanals from "../../assets/services/RetreatmentofFailedRootCanals.png";
+import SmileDesigning from "../../assets/services/SmileDesigning.png";
+import SpaceClosureinAnteriorTeeth from "../../assets/services/SpaceClosureinAnteriorTeeth.png";
+import StripCrowns from "../../assets/services/StripCrowns.png";
+import TeethWhitening from "../../assets/services/TeethWhitening.png";
+import ToothColoredRestoration from "../../assets/services/ToothColoredRestoration.png";
+import ToothJewellery from "../../assets/services/ToothJewellery.png";
+import VitalPulpTherapy from "../../assets/services/VitalPulpTherapy.png";
+import RootCanalTreatmentforPrimaryTeeth from "../../assets/services/RootCanalTreatmentforPrimaryTeeth.png";
+import PeriapicalSurgery from "../../assets/services/PeriapicalSurgery.png";
+
+import MetalBracesTreatment from "../../assets/services/MetalBracesTreatment.png";
+import CeramicBracesTreatment from "../../assets/services/CeramicBracesTreatment.png";
+import DamonBracesTreatment from "../../assets/services/DamonBracesTreatment.png";
+import InvisalignTreatment from "../../assets/services/InvisalignTreatment.png";
+
+import ImmediateLoadedImplants from "../../assets/services/ImmediateLoadedImplants.png";
+import KeyholeImplantand3DGuidedImplants from "../../assets/services/KeyholeImplantand3DGuidedImplants.png";
+import ScalingandToothPolishing from "../../assets/services/ScalingandToothPolishing.png";
+
+import PreventiveDentistry from "../../assets/services/PreventiveDentistry.png";
+
 
 /* =========================================
    REUSABLE TREATMENT DATA BUILDER
@@ -137,7 +172,7 @@ const services = {
 
   "microscopic-root-canal-treatment": createTreatment({
     title: "Microscopic Root Canal Treatment",
-    image: rootCanalImage,
+    image: MicroscopicRootCanalTreatment,
     imageAlt: "Root canal treatment",
     intro: "Microscopic root canal treatment uses magnification to help the dentist examine the internal structures of a tooth in greater detail. It may be considered in selected cases where additional visibility is useful during treatment.",
     benefits: [
@@ -157,7 +192,7 @@ const services = {
 
   "root-canal-retreatment": createTreatment({
     title: "Retreatment of Failed Root Canals",
-    image: rootCanalImage,
+    image: RetreatmentofFailedRootCanals,
     imageAlt: "Root canal dental model",
     intro: "Root canal retreatment may be considered when a previously treated tooth develops persistent or recurring problems. The dentist examines the tooth, reviews previous treatment and discusses whether retreatment or another option may be appropriate.",
     benefits: [
@@ -177,7 +212,7 @@ const services = {
 
   "root-canal-treatment-primary-teeth": createTreatment({
     title: "Root Canal Treatment for Primary Teeth",
-    image: generalImage,
+    image: RootCanalTreatmentforPrimaryTeeth,
     imageAlt: "Child dental care",
     intro: "Some primary teeth affected by deep decay or infection may need pulp treatment to help maintain comfort and function until natural tooth replacement. The dentist will assess the child's tooth and explain the suitable approach.",
     benefits: [
@@ -197,7 +232,7 @@ const services = {
 
   "periapical-surgery": createTreatment({
     title: "Periapical Surgery",
-    image: rootCanalImage,
+    image: PeriapicalSurgery,
     imageAlt: "Dental root illustration",
     intro: "Periapical surgery may be considered when inflammation or infection around a tooth root remains after other treatment. The dentist or specialist will review the tooth and explain whether surgery is appropriate.",
     benefits: [
@@ -266,7 +301,7 @@ const services = {
 
   "immediate-loaded-implants": createTreatment({
     title: "Immediate Loaded Implants",
-    image: implantImage,
+    image: ImmediateLoadedImplants,
     imageAlt: "Dental implant restoration",
     intro: "Immediate loading is an implant approach in which a temporary restoration may be attached soon after implant placement in carefully selected cases. Suitability depends on clinical findings, implant stability and the dentist's treatment plan.",
     benefits: [
@@ -286,7 +321,7 @@ const services = {
 
   "full-mouth-fixed-ceramic-teeth": createTreatment({
     title: "Full Mouth Fixed Ceramic Teeth",
-    image: implantImage,
+    image: FullMouthFixedCeramicTeeth,
     imageAlt: "Full mouth dental restoration model",
     intro: "Full mouth fixed ceramic teeth may be considered for people who need extensive dental rehabilitation. The treatment plan depends on the condition of existing teeth, gums, bone support and the type of restoration recommended.",
     benefits: [
@@ -306,7 +341,7 @@ const services = {
 
   "keyhole-3d-guided-implants": createTreatment({
     title: "Keyhole Implant and 3D Guided Implants",
-    image: implantImage,
+    image: KeyholeImplantand3DGuidedImplants,
     imageAlt: "Dental implant planning model",
     intro: "Computer guided implant planning uses dental imaging and digital planning tools to help assess implant position. A guided or minimally invasive approach may be suitable in selected cases after clinical examination.",
     benefits: [
@@ -326,7 +361,7 @@ const services = {
 
   "metal-braces-treatment": createTreatment({
     title: "Metal Braces Treatment",
-    image: orthodonticImage,
+    image: MetalBracesTreatment,
     imageAlt: "Metal orthodontic braces",
     intro: "Metal braces use brackets and wires to guide teeth into planned positions over time. An orthodontic assessment helps determine the treatment approach, expected duration and review schedule.",
     benefits: [
@@ -346,7 +381,7 @@ const services = {
 
   "ceramic-braces-treatment": createTreatment({
     title: "Ceramic Braces Treatment",
-    image: orthodonticImage,
+    image: CeramicBracesTreatment,
     imageAlt: "Ceramic orthodontic braces",
     intro: "Ceramic braces use tooth coloured or translucent brackets to help guide teeth into planned positions. Your orthodontist will assess whether this option is suitable for your alignment needs.",
     benefits: [
@@ -366,7 +401,7 @@ const services = {
 
   "damon-braces-treatment": createTreatment({
     title: "Damon Braces Treatment",
-    image: orthodonticImage,
+    image: DamonBracesTreatment,
     imageAlt: "Self ligating orthodontic braces",
     intro: "Damon braces are a type of self ligating orthodontic system. The suitability of this system depends on the patient's bite, alignment needs and the orthodontist's clinical assessment.",
     benefits: [
@@ -386,7 +421,7 @@ const services = {
 
   "invisalign-treatment": createTreatment({
     title: "Invisalign Treatment",
-    image: orthodonticImage,
+    image: InvisalignTreatment,
     imageAlt: "Clear dental aligner",
     intro: "Clear aligner treatment uses a series of removable transparent trays to move teeth gradually. Your dentist or orthodontist will assess your bite and determine whether clear aligners are appropriate.",
     benefits: [
@@ -406,7 +441,7 @@ const services = {
 
   "maxillary-surgery": createTreatment({
     title: "Maxillary Surgery",
-    image: orthodonticImage,
+    image: MaxillarySurgery,
     imageAlt: "Jaw alignment dental model",
     intro: "Maxillary surgery involves the upper jaw and may be considered for selected skeletal or bite related concerns. Assessment and planning are generally coordinated by an appropriately qualified specialist team.",
     benefits: [
@@ -426,7 +461,7 @@ const services = {
 
   "mandibular-surgery": createTreatment({
     title: "Mandibular Surgery",
-    image: orthodonticImage,
+    image: MandibularSurgery,
     imageAlt: "Lower jaw alignment model",
     intro: "Mandibular surgery involves the lower jaw and may be recommended for selected jaw position or bite concerns. A specialist assessment is needed to understand the available options and treatment sequence.",
     benefits: [
@@ -466,7 +501,7 @@ const services = {
 
   "tooth-colored-restoration": createTreatment({
     title: "Tooth Colored Restoration",
-    image: cosmeticImage,
+    image: ToothColoredRestoration,
     imageAlt: "Tooth coloured dental restoration",
     intro: "Tooth coloured restorations use dental materials selected to blend with the natural appearance of teeth. They may be used to repair certain areas affected by decay, wear or damage.",
     benefits: [
@@ -486,7 +521,7 @@ const services = {
 
   "crown-lengthening-gum-reshaping": createTreatment({
     title: "Crown Lengthening and Gum Reshaping",
-    image: cosmeticImage,
+    image: CrownLengtheningandGumReshaping,
     imageAlt: "Dental gum contouring",
     intro: "Crown lengthening and gum reshaping are procedures that adjust the gum line and, in selected cases, the supporting tissue around teeth. The dentist will assess gum health and explain whether these procedures are suitable.",
     benefits: [
@@ -506,7 +541,7 @@ const services = {
 
   "gingival-depigmentation": createTreatment({
     title: "Gingival Depigmentation",
-    image: cosmeticImage,
+    image: GingivalDepigmentation,
     imageAlt: "Healthy gum appearance",
     intro: "Gingival depigmentation is a cosmetic procedure that may be considered to reduce selected areas of darker gum pigmentation. A dentist will first assess gum health and explain expected outcomes and limitations.",
     benefits: [
@@ -526,7 +561,7 @@ const services = {
 
   "inlay-onlay": createTreatment({
     title: "Inlay and Onlay",
-    image: cosmeticImage,
+    image: InlayandOnlay,
     imageAlt: "Dental inlay and onlay restorations",
     intro: "Inlays and onlays are custom restorations used to repair selected areas of a damaged tooth. Your dentist will assess how much tooth structure remains and whether an inlay, onlay or another restoration is appropriate.",
     benefits: [
@@ -546,7 +581,7 @@ const services = {
 
   "smile-designing": createTreatment({
     title: "Smile Designing",
-    image: cosmeticImage,
+    image: SmileDesigning,
     imageAlt: "Smile design dental consultation",
     intro: "Smile designing involves assessing the appearance of teeth, gums and smile proportions before discussing suitable cosmetic or restorative options. The plan should reflect oral health, facial features and individual preferences.",
     benefits: [
@@ -566,7 +601,7 @@ const services = {
 
   "space-closure-anterior-teeth": createTreatment({
     title: "Space Closure in Anterior Teeth",
-    image: cosmeticImage,
+    image: SpaceClosureinAnteriorTeeth,
     imageAlt: "Front teeth smile alignment",
     intro: "Spaces between front teeth may be managed using orthodontic or restorative approaches, depending on their cause and size. A dental assessment helps determine which option is appropriate.",
     benefits: [
@@ -586,7 +621,7 @@ const services = {
 
   "tooth-jewellery": createTreatment({
     title: "Tooth Jewellery",
-    image: cosmeticImage,
+    image: ToothJewellery,
     imageAlt: "Decorative dental tooth jewellery",
     intro: "Tooth jewellery is a cosmetic option in which a small decorative accessory may be attached to a tooth surface. A dental professional should assess the tooth and explain safe placement and removal options.",
     benefits: [
@@ -606,7 +641,7 @@ const services = {
 
   "digital-smile-design": createTreatment({
     title: "Digital Smile Design",
-    image: cosmeticImage,
+    image: DigitalSmileDesign,
     imageAlt: "Digital smile design planning",
     intro: "Digital smile design uses photographs, scans or digital planning tools to help review possible changes to a smile. It can support communication and planning but does not replace a clinical examination.",
     benefits: [
@@ -626,7 +661,7 @@ const services = {
 
   "dental-veneers": createTreatment({
     title: "Dental Veneers",
-    image: cosmeticImage,
+    image: DentalVeneers,
     imageAlt: "Dental veneer model",
     intro: "Dental veneers are thin coverings placed on selected tooth surfaces to change their appearance. A dentist will assess tooth health, enamel and bite before recommending whether veneers are suitable.",
     benefits: [
@@ -646,7 +681,7 @@ const services = {
 
   "teeth-whitening": createTreatment({
     title: "Teeth Whitening",
-    image: cosmeticImage,
+    image: TeethWhitening,
     imageAlt: "Professional teeth whitening",
     intro: "Teeth whitening is a cosmetic procedure intended to lighten the appearance of natural teeth. A dental examination helps identify the cause of discoloration and whether whitening is appropriate.",
     benefits: [
@@ -666,7 +701,7 @@ const services = {
 
   "pediatric-dentistry": createTreatment({
     title: "Pediatric Dentistry",
-    image: generalImage,
+    image: PreventivyDentistry,
     imageAlt: "Child friendly dental care",
     intro: "Pediatric dentistry focuses on children's oral health, including preventive care, dental development and treatment of common childhood dental concerns. Care is planned according to the child's age and needs.",
     benefits: [
@@ -686,7 +721,7 @@ const services = {
 
   "growth-modulation": createTreatment({
     title: "Growth Modulation",
-    image: generalImage,
+    image: GrowthModulation,
     imageAlt: "Child orthodontic assessment",
     intro: "Growth modulation is an orthodontic approach that may be considered while a child's jaws are still developing. The timing and suitability depend on the child's growth pattern and orthodontic assessment.",
     benefits: [
@@ -706,7 +741,7 @@ const services = {
 
   "early-childhood-caries": createTreatment({
     title: "Early Childhood Caries",
-    image: generalImage,
+    image: EarlyChildhoodCaries,
     imageAlt: "Child dental examination",
     intro: "Early childhood caries refers to tooth decay affecting young children. Early dental assessment helps identify the extent of decay and plan suitable treatment alongside guidance on feeding habits and oral hygiene.",
     benefits: [
@@ -746,7 +781,7 @@ const services = {
 
   "vital-pulp-therapy": createTreatment({
     title: "Vital Pulp Therapy",
-    image: generalImage,
+    image: VitalPulpTherapy,
     imageAlt: "Pediatric dental treatment",
     intro: "Vital pulp therapy is a group of procedures used in selected cases to maintain the health of living pulp tissue in a tooth. The dentist will assess the tooth and decide whether this approach is suitable.",
     benefits: [
@@ -766,7 +801,7 @@ const services = {
 
   "strip-crowns": createTreatment({
     title: "Strip Crowns",
-    image: generalImage,
+    image: StripCrowns,
     imageAlt: "Pediatric dental crown model",
     intro: "Strip crowns are tooth coloured restorations sometimes used to restore damaged primary front teeth. The dentist will assess the tooth and determine whether this restoration is suitable.",
     benefits: [
@@ -786,7 +821,7 @@ const services = {
 
   "scaling-tooth-polishing": createTreatment({
     title: "Scaling and Tooth Polishing",
-    image: generalImage,
+    image: ScalingandToothPolishing,
     imageAlt: "Professional dental cleaning",
     intro: "Scaling removes hardened deposits from tooth surfaces, while polishing may help remove certain surface stains. Your dental professional will assess gum health and recommend an appropriate cleaning approach.",
     benefits: [
@@ -826,7 +861,7 @@ const services = {
 
   "dental-trauma-kids": createTreatment({
     title: "Dental Trauma in Kids",
-    image: generalImage,
+    image: DentalTraumainKids,
     imageAlt: "Child dental consultation",
     intro: "Dental trauma in children can involve chipped, displaced or injured teeth. Prompt assessment by a dentist is important because treatment depends on the type of injury, the child's age and whether the affected tooth is primary or permanent.",
     benefits: [
