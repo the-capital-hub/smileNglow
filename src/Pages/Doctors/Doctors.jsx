@@ -16,6 +16,8 @@ import sushant from "../../assets/docotor/sushant.png";
 import yajwin from "../../assets/docotor/yajwin.png";
 import sai from "../../assets/docotor/sai.png";
 import vaishak from "../../assets/docotor/vaishak.png";
+import pramod from "../../assets/docotor/pramod.png";
+
 /* Doctor Data */
 
 const doctors = [
@@ -192,7 +194,7 @@ const doctors = [
   qualification: "Clinic Operations & Patient Coordination",
   description:
     "Dedicated to ensuring smooth clinic operations, coordinating patient appointments, and creating a comfortable experience for every visitor.",
-  image: "",
+  image: pramod,
   branches: ["Jayanagar"],
   category: "manager",
   branchOrder: { Jayanagar: 2 },
