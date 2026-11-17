@@ -38,6 +38,9 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <AnimatedSection>
+        <AboutUs />
+      </AnimatedSection>
 
       <AnimatedSection>
         <WhyChooseUs/>
@@ -47,9 +50,7 @@ const Home = () => {
         <DentalServices />
       </AnimatedSection>
 
-      <AnimatedSection>
-        <AboutUs />
-      </AnimatedSection>
+      
 
       <AnimatedSection>
         <PatientTestimonials />
