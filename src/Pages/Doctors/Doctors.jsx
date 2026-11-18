@@ -187,18 +187,7 @@ const doctors = [
     category: "consultant",
     branchOrder: { "Silk Institute": 5 },
   },
-  {
-  id: "Pramod",
-  name: "Pramod",
-  role: "Clinic Manager",
-  qualification: "Clinic Operations & Patient Coordination",
-  description:
-    "Dedicated to ensuring smooth clinic operations, coordinating patient appointments, and creating a comfortable experience for every visitor.",
-  image: pramod,
-  branches: ["Jayanagar"],
-  category: "manager",
-  branchOrder: { Jayanagar: 2 },
-},
+  
 ];
 
 /* Animations */
